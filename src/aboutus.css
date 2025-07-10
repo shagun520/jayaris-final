@@ -75,6 +75,7 @@ body {
     font-size: 1.3rem;
   }
 }
+/* Base styles (your existing CSS) */
 
 /* Remove margin-bottom from the logo. Rely on gap on parent instead. */
 .jayaris-logo-about {
@@ -155,7 +156,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-{/* mission */}
+/* mission */
 
 .mission-section {
   margin: 6rem auto;
@@ -222,7 +223,7 @@ body {
   text-align: justify;
 }
 
-{/* values */}
+/* values */
 
 .values-wrapper {
   display: flex;
@@ -279,4 +280,169 @@ body {
 
 .value-box:hover {
   transform: translateY(-5px);
+}
+
+/* --- Mobile Responsiveness Adjustments --- */
+
+@media screen and (max-width: 768px) {
+  /* General / Utility */
+  body {
+    padding: 0; /* Remove default body padding if any */
+  }
+
+  /* About Section */
+  .aboutus-section {
+    flex-direction: column; /* Stack columns vertically */
+    padding: 2rem 1rem; /* Reduce horizontal padding */
+    min-height: auto; /* Allow height to adjust naturally */
+  }
+
+  .left-stack {
+    font-size: 2rem; /* Reduce font size for smaller screens */
+    text-align: center; /* Center align text */
+    min-height: auto; /* Remove fixed height */
+  }
+
+  .right-section {
+    margin-top: 2rem; /* Reduce top margin, adjust as needed */
+    flex: none; /* Remove flex sizing */
+    width: 100%; /* Take full width */
+    padding: 0 1rem; /* Add some padding if needed */
+  }
+
+  .jayaris-logo-about {
+    width: 200px; /* Make logo smaller */
+    margin-top: -3rem; /* Adjust negative margin */
+  }
+
+  .jayaris-tagline {
+    font-size: 1.2rem; /* Reduce tagline font size */
+    padding: 0 1rem; /* Add some horizontal padding */
+  }
+
+  .glass-card1 {
+    font-size: 0.95rem; /* Reduce card text font size */
+    max-width: 100%; /* Allow card to take full width with padding */
+    padding: 0 1rem; /* Ensure it respects padding */
+  }
+
+  .tagline-placeholder,
+  .glass-card-placeholder {
+    min-height: auto; /* Allow content to dictate height */
+    margin-top: 0.5rem; /* Adjust spacing */
+  }
+
+  /* Mission & Info Sections */
+  .mission-section,
+  .info-section {
+    margin: 3rem 1rem; /* Reduce top/bottom margin, add horizontal margin */
+    margin-bottom: 5rem; /* Adjust bottom margin for mission */
+    max-width: calc(100% - 2rem); /* Take full width minus padding */
+    padding: 2rem 1.5rem; /* Reduce padding */
+  }
+
+  .mission-heading,
+  .info-heading {
+    font-size: 1.8rem; /* Reduce heading font size */
+    text-align: center; /* Center align heading */
+    justify-content: center; /* For flex-wrap to center items */
+  }
+
+  .mission-para,
+  .info-paragraph {
+    font-size: 1rem; /* Reduce paragraph font size */
+  }
+
+  /* Values Section */
+  .values-wrapper {
+    flex-direction: column; /* Stack vertically */
+    padding: 2rem 1rem; /* Reduce padding */
+    max-width: 100%; /* Take full width */
+    margin-left: 0; /* Remove fixed left margin */
+  }
+
+  .glass-section {
+    flex-direction: column; /* Stack items vertically */
+    gap: 1.5rem; /* Reduce gap between stacked items */
+    padding: 2rem 1.5rem; /* Reduce padding */
+  }
+
+  .values-heading {
+    margin-top: 0; /* Remove large top margin */
+    font-size: 2.5rem; /* Reduce heading font size */
+    text-align: center; /* Center align text */
+    width: 100%; /* Ensure it takes full width for centering */
+  }
+
+  .values-list {
+    flex: none; /* Remove flex sizing */
+    width: 100%; /* Take full width */
+  }
+
+  .value-box {
+    padding: 0.8rem 1.2rem; /* Slightly reduce padding */
+    font-size: 1.1rem; /* Reduce font size */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Further adjustments for very small screens */
+
+  .aboutus-section {
+    padding: 1rem 0.5rem; /* Even tighter padding */
+  }
+
+  .left-stack {
+    font-size: 1.5rem; /* Even smaller font size */
+    gap: 0.3rem;
+  }
+
+  .jayaris-logo-about {
+    width: 150px; /* Even smaller logo */
+    margin-top: -2rem; /* Further adjust negative margin */
+  }
+
+  .jayaris-tagline {
+    font-size: 1rem; /* Smallest tagline font size */
+  }
+
+  .glass-card1 {
+    font-size: 0.85rem; /* Smallest card text font size */
+  }
+
+  .mission-section,
+  .info-section {
+    margin: 2rem 0.5rem; /* Tighter margins */
+    margin-bottom: 4rem; /* Adjust bottom margin for mission */
+    max-width: calc(100% - 1rem); /* Take full width minus padding */
+    padding: 1.5rem 1rem; /* Tighter padding */
+  }
+
+  .mission-heading,
+  .info-heading {
+    font-size: 1.5rem; /* Even smaller heading font size */
+  }
+
+  .mission-para,
+  .info-paragraph {
+    font-size: 0.9rem; /* Even smaller paragraph font size */
+  }
+
+  .values-wrapper {
+    padding: 1.5rem 0.5rem; /* Tighter padding */
+  }
+
+  .glass-section {
+    padding: 1.5rem 1rem; /* Tighter padding */
+    gap: 1rem;
+  }
+
+  .values-heading {
+    font-size: 2rem; /* Even smaller values heading */
+  }
+
+  .value-box {
+    padding: 0.6rem 1rem; /* Tighter padding */
+    font-size: 1rem; /* Even smaller font size */
+  }
 }
