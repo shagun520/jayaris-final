@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/jayaris-final/static/css/main.24f8c804.css",
-    "main.js": "/jayaris-final/static/js/main.e7eb3b89.js",
+    "main.css": "/jayaris-final/static/css/main.ce62b998.css",
+    "main.js": "/jayaris-final/static/js/main.d8411cc3.js",
     "static/media/earthbg.mp4": "/jayaris-final/static/media/earthbg.9cd18799712566afa3be.mp4",
     "static/media/your-video.mp4": "/jayaris-final/static/media/your-video.6ed8432a3d845192b424.mp4",
     "static/media/image.jpg": "/jayaris-final/static/media/image.bb9f3f1e9e898a80d520.jpg",
@@ -32,11 +32,11 @@
     "static/media/swebd.png": "/jayaris-final/static/media/swebd.55505f9d9b08f033a89d.png",
     "static/media/sappd.png": "/jayaris-final/static/media/sappd.aecaca7b28a973f26681.png",
     "index.html": "/jayaris-final/index.html",
-    "main.24f8c804.css.map": "/jayaris-final/static/css/main.24f8c804.css.map",
-    "main.e7eb3b89.js.map": "/jayaris-final/static/js/main.e7eb3b89.js.map"
+    "main.ce62b998.css.map": "/jayaris-final/static/css/main.ce62b998.css.map",
+    "main.d8411cc3.js.map": "/jayaris-final/static/js/main.d8411cc3.js.map"
   },
   "entrypoints": [
-    "static/css/main.24f8c804.css",
-    "static/js/main.e7eb3b89.js"
+    "static/css/main.ce62b998.css",
+    "static/js/main.d8411cc3.js"
   ]
 }
