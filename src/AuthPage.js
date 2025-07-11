@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './AuthPage.css';
 import Footer from './components/Footer';
-import { Container, Nav, Navbar, Button, Dropdown } from "react-bootstrap";
-import { Link } from 'react-router-dom';
-import logoImage from './image/logo.png';
-import { motion } from 'framer-motion';
+import Navbar from './components/Navbar';
 import { useLocation } from 'react-router-dom'; // Import useLocation for scroll-to-top logic
 
 const AuthPage = () => {
@@ -279,54 +276,7 @@ const AuthPage = () => {
 
   return (
     <>
-      {/* Navbar (from your provided code) */}
-      <motion.div
-        initial={{ opacity: 0, y: -30, filter: "blur(8px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-        style={{ position: 'fixed', width: '100%', zIndex: 9999 }}
-      >
-        <Navbar expand="lg" fixed="top" className="glass-navbar px-4">
-          <Container fluid className="d-flex justify-content-between align-items-center">
-            <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
-              <img
-                src={logoImage}
-                width="30"
-                height="30"
-                className="d-inline-block align-top me-2"
-                alt="Jayaris Logo"
-              />
-              <span className="fw-bold text-white">Jayaris</span>
-            </Navbar.Brand>
-
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="mx-auto">
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
-                <Nav.Link as={Link} to="/about">About</Nav.Link>
-                <Nav.Link as={Link} to="/services">Services</Nav.Link>
-                <Nav.Link as={Link} to="/testimonials">Testimonials</Nav.Link>
-                <Nav.Link as={Link} to="/career">Career</Nav.Link>
-                <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
-              </Nav>
-
-              <div className="d-flex align-items-center gap-3 ms-lg-auto">
-                <Dropdown align="end">
-                  <Dropdown.Toggle variant="outline-light" size="sm" className="language-toggle d-flex align-items-center">
-                    <span className="me-1">🌐</span> En
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item>English</Dropdown.Item>
-                    <Dropdown.Item>हिन्दी</Dropdown.Item>
-                    <Dropdown.Item>Français</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-      </motion.div>
-
+      <Navbar/>
       {/* Auth Body */}
       <div className="auth-page-wrapper">
         <div className="auth-container">

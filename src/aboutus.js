@@ -1,112 +1,72 @@
 import React from "react";
 import "./aboutus.css"; // if you’re using a CSS file
 import { motion } from "framer-motion";
-import { Container, Nav, Navbar, Button, Dropdown } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Container, Nav, Button, Dropdown } from "react-bootstrap";
+import Navbar from './components/Navbar';
 import { useEffect, useState } from "react";
-import { Typewriter } from "react-simple-typewriter";
+import { Typewriter } from "react-simple-typewriter"; // This is not used in the provided code, but keeping it
 import Tilt from "react-parallax-tilt";
 import logoImage from './image/logo.png';
-import Footer from './components/Footer'; 
+import Footer from './components/Footer';
 import './components/Footer.css';
 import { useLocation } from 'react-router-dom';
+import useMediaQuery from './hooks/useMediaQuery';
+
 const AboutUs = () => {
   const location = useLocation();
+  const isSmallScreen = useMediaQuery('(max-width: 991.98px)');
 
    useEffect(() => {
-    // Check if navigation came from a footer link (via location.state)
-    // AND if there's no hash (using the location object from useLocation())
-    if (location.state?.fromFooter && !location.hash) { // <-- CORRECTED LINE
+    if (location.state?.fromFooter && !location.hash) {
       window.scrollTo(0, 0);
     }
   }, [location]);
-   const [showCode, setShowCode] = useState(false);
-  const [showDeploy, setShowDeploy] = useState(false);
-  const [showPara, setShowPara] = useState(false);
 
-  // ✅ Add this here 👇
+  const [showCode, setShowCode] = useState(false); // Not used in provided code
+  const [showDeploy, setShowDeploy] = useState(false); // Not used in provided code
+  const [showPara, setShowPara] = useState(false); // Not used in provided code
+
   const [showCard, setShowCard] = useState(false);
 
   useEffect(() => {
-    const codeTimer = setTimeout(() => setShowCode(true), 1500);
-    const deployTimer = setTimeout(() => setShowDeploy(true), 3000);
-    const paraTimer = setTimeout(() => setShowPara(true), 4500);
-      // ✅ Add this for the card animation
     const cardTimer = setTimeout(() => setShowCard(true), 1200);
     return () => {
-      clearTimeout(codeTimer);
-      clearTimeout(deployTimer);
-      clearTimeout(paraTimer);
-      clearTimeout(cardTimer); // ✅ also clear this
+      clearTimeout(cardTimer);
     };
   }, []);
+
+   // This object correctly defines different delays based on screen size
+   const animationDelays = {
+    // Original glass-card1 finishes animation around 0.9s (delay) + 1.0s (duration) = 1.9s from page load.
+    // So, we want missionWrapper to start animating AFTER that on small screens.
+    missionWrapper: isSmallScreen ? 2.2 : 0.0, // Start mission section significantly later on mobile (e.g., 2.2s after page load)
+
+    // These delays are *relative* to when the 'missionWrapper' starts its animation.
+    // We can also increase these slightly for a more deliberate mobile reveal.
+    missionHeading: isSmallScreen ? 0.7 : 0.2, // Base delay for heading after wrapper appears
+    missionHeadingWordStagger: isSmallScreen ? 0.15 : 0.05, // Increased stagger for individual words
+    missionPara: isSmallScreen ? 1.2 : 0.3, // Ensure para comes after heading and heading words are done
+
+    // Vision section should start animating only after the mission section is clearly visible.
+    // If missionWrapper starts at 2.2s, its content animates for ~1.5s, so mission section finishes around 2.2 + ~1.5 = ~3.7s.
+    // Let's give it a generous buffer.
+    visionSection: isSmallScreen ? 1.0 : 0.1, // Start vision section later on mobile (e.g., 4.0s after page load)
+    visionHeading: isSmallScreen ? 0.7 : 0.2,
+    visionHeadingWordStagger: isSmallScreen ? 0.15 : 0.05,
+    visionPara: isSmallScreen ? 1.2 : 0.3,
+
+    // Values section should start animating only after the vision section is clearly visible.
+    // If visionSection starts at 4.0s, its content animates for ~1.5s, so vision section finishes around 4.0 + ~1.5 = ~5.5s.
+    valuesContainer: isSmallScreen ? 2.3 : 0.1, // Start values section later on mobile (e.g., 5.8s after page load)
+    valuesHeading: isSmallScreen ? 0.7 : 0.3,
+    valuesBoxStagger: isSmallScreen ? 0.2 : 0.06, // Slightly more stagger for boxes
+};
+
   return (
-      //nav bar
       <>
-      <motion.div
-      initial={{ opacity: 0, y: -30, filter: "blur(8px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-      style={{ position: 'fixed', width: '100%', zIndex: 9999 }}
-    >
-      <Navbar expand="lg" fixed="top" className="glass-navbar px-4">
-        <Container fluid className="d-flex justify-content-between align-items-center">
-
-          {/* Left: Jayaris Brand - UPDATED */}
-          <Navbar.Brand as={Link} to="/" className="d-flex align-items-center"> {/* Added as={Link} to="/" and d-flex for alignment */}
-            <img
-              src={logoImage} // Use the imported image
-              width="30" // Initial width, will adjust with CSS
-              height="30" // Initial height, will adjust with CSS
-              className="d-inline-block align-top me-2" // Bootstrap classes for inline-block, vertical alignment, and right margin
-              alt="Jayaris Logo"
-            />
-            <span className="fw-bold text-white">Jayaris</span> {/* Keep the text next to it */}
-          </Navbar.Brand>
-
-          {/* Toggler for mobile */}
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-
-          {/* Collapsible content */}
-          <Navbar.Collapse id="responsive-navbar-nav">
-            {/* Center: Nav Links */}
-            <Nav className="mx-auto">
-              <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/about">About</Nav.Link>
-              <Nav.Link as={Link} to="/services">Services</Nav.Link>
-              <Nav.Link as={Link} to="/testimonials">Testimonials</Nav.Link>
-              <Nav.Link as={Link} to="/career">Career</Nav.Link>
-              <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
-            </Nav>
-
-            {/* Right: Signup + Language - these will also collapse */}
-            <div className="d-flex align-items-center gap-3 ms-lg-auto">
-              <Link to="/auth" style={{ textDecoration: "none" }}>
-                <Button variant="outline-light" size="sm" className="signup-btn">
-                  Login
-                </Button>
-              </Link>
-              <Dropdown align="end">
-                <Dropdown.Toggle variant="outline-light" size="sm" className="language-toggle d-flex align-items-center">
-                  <span className="me-1">🌐</span> En
-                </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item>English</Dropdown.Item>
-                    <Dropdown.Item>हिन्दी</Dropdown.Item>
-                    <Dropdown.Item>Français</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
-            </Navbar.Collapse>
-
-          </Container>
-        </Navbar>
-      </motion.div>
-
-
+      <Navbar/>
+    
   {/* first viewport */}
- {/* first viewport */}
- 
   <div className="aboutus-section">
   <div className="right-section">
     {/* Logo (always visible) */}
@@ -140,7 +100,7 @@ const AboutUs = () => {
           className="glass-card1"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.9 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.9 }} // Original delay
           layout
         >
           <h3>Empowering the Digital Future — One Solution at a Time</h3>
@@ -161,23 +121,28 @@ const AboutUs = () => {
   className="mission-wrapper"
   initial={{ opacity: 0, x: -100 }}
   whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 1, ease: "easeOut" }}
-  viewport={{ once: true, amount: 0.5 }}
+  // **** CHANGE THIS LINE ****
+  transition={{ duration: 1, ease: "easeOut", delay: animationDelays.missionWrapper }}
+  viewport={{ once: true, amount: 0.5 }} // Keep amount for general visibility
 >
   <section className="mission-section" id="mission">
     <motion.h2
       className="mission-heading"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.5, delay: 0.4 }}
+      whileInView={{ opacity: 1 }}
+      // **** CHANGE THIS LINE ****
+      transition={{ duration: 1.5, delay: animationDelays.missionHeading }}
+      viewport={{ once: true }} // No amount needed here, parent controls initial view
     >
       {"Our Mission".split(" ").map((word, idx) => (
         <motion.span
           key={idx}
           className="word-span"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 + idx * 0.4 }} // Staggered animation
+          whileInView={{ opacity: 1 }} // Changed to whileInView
+          // **** CHANGE THIS LINE ****
+          transition={{ delay: animationDelays.missionHeadingWordStagger + idx * animationDelays.missionHeadingWordStagger }}
+          viewport={{ once: true }}
         >
           {word}&nbsp;
         </motion.span>
@@ -188,8 +153,9 @@ const AboutUs = () => {
       className="mission-para"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.2, ease: "easeOut", delay: 1.8 }}
-      viewport={{ once: true }}
+      // **** CHANGE THIS LINE ****
+      transition={{ duration: 1.2, ease: "easeOut", delay: animationDelays.missionPara }}
+      viewport={{ once: true, amount: 0.5 }} // Ensure paragraph comes into view later
     >
       At Jayaris, our mission is to bridge global gaps through technology by delivering
       future-ready digital solutions that blend creativity, functionality, and impact. We aim
@@ -207,14 +173,16 @@ const AboutUs = () => {
   className="info-section"
   initial={{ opacity: 0, x: 120 }}
   whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 1.2, ease: "easeOut" }}
+  // **** CHANGE THIS LINE ****
+  transition={{ duration: 1.2, ease: "easeOut", delay: animationDelays.visionSection }}
   viewport={{ once: true, amount: 0.5 }} // triggers when ~40% in view
 >
   <motion.h2
     className="info-heading"
     initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    transition={{ duration: 0.6, delay: 0.5 }}
+    whileInView={{ opacity: 1 }} // Changed to whileInView
+    // **** CHANGE THIS LINE ****
+    transition={{ duration: 0.6, delay: animationDelays.visionHeading }}
     viewport={{ once: true }}
   >
     {"Our Vision".split(" ").map((word, idx) => (
@@ -222,8 +190,10 @@ const AboutUs = () => {
         key={idx}
         className="word-span"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.7 + idx * 0.3 }}
+        whileInView={{ opacity: 1 }} // Changed to whileInView
+        // **** CHANGE THIS LINE ****
+        transition={{ delay: animationDelays.visionHeadingWordStagger + idx * animationDelays.visionHeadingWordStagger }}
+        viewport={{ once: true }}
       >
         {word}&nbsp;
       </motion.span>
@@ -234,8 +204,9 @@ const AboutUs = () => {
     className="info-paragraph"
     initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }}
-    transition={{ duration: 1, delay: 2 }}
-    viewport={{ once: true }}
+    // **** CHANGE THIS LINE ****
+    transition={{ duration: 1, delay: animationDelays.visionPara }}
+    viewport={{ once: true, amount: 0.5 }} // Ensure paragraph comes into view later
   >
     At Jayaris, we envision becoming the most trusted global partner in
     digital transformation — a name synonymous with innovation,
@@ -258,15 +229,17 @@ const AboutUs = () => {
     className="values-container glass-section"
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
-     whileHover={{ rotateX: 5, rotateY: -5 }}
-    transition={{ duration: 1, ease: "easeOut" }}
-    viewport={{ once: true }}
+    whileHover={{ rotateX: 5, rotateY: -5 }}
+    // **** CHANGE THIS LINE ****
+    transition={{ duration: 1, ease: "easeOut", delay: animationDelays.valuesContainer }}
+    viewport={{ once: true, amount: 0.5 }}
   >
     <motion.h2
       className="values-heading"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.2, delay: 0.4 }}
+      // **** CHANGE THIS LINE ****
+      transition={{ duration: 1.2, delay: animationDelays.valuesHeading }}
       viewport={{ once: true }}
     >
       OUR VALUES
@@ -281,7 +254,8 @@ const AboutUs = () => {
           className="value-box"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 + index * 0.3 }}
+          // **** CHANGE THIS LINE ****
+          transition={{ duration: 0.5, delay: animationDelays.valuesBoxStagger + index * animationDelays.valuesBoxStagger }}
           viewport={{ once: true }}
         >
           {value}

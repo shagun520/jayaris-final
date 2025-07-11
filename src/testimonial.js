@@ -5,12 +5,13 @@ import { Typewriter } from 'react-simple-typewriter';
 import './testimonial.css'; // Create this new CSS file for testimonial specific styles
 import { Link } from 'react-router-dom';
 import  { useRef, useLayoutEffect, useCallback, useMemo } from "react"; // Import useEffect
-import logoImage from './image/logo.png';
-import { Container, Nav, Navbar, Button, Dropdown } from "react-bootstrap";
+import { Container, Nav, Button, Dropdown } from "react-bootstrap";
 import client1 from './image/client1.jpeg';
+
 import client2 from './image/client2.jpeg';
 import client3 from './image/client3.jpeg';
 import Footer from './components/Footer'; 
+import Navbar from './components/Navbar'; 
 // Data for the testimonials
 const feedbackList = [
   {
@@ -55,65 +56,7 @@ const Testimonial = () => {
 
   return (
     <>
-     <motion.div
-      initial={{ opacity: 0, y: -30, filter: "blur(8px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-      style={{ position: 'fixed', width: '100%', zIndex: 9999 }}
-    >
-      <Navbar expand="lg" fixed="top" className="glass-navbar px-4">
-        <Container fluid className="d-flex justify-content-between align-items-center">
-
-          {/* Left: Jayaris Brand - UPDATED */}
-          <Navbar.Brand as={Link} to="/" className="d-flex align-items-center"> {/* Added as={Link} to="/" and d-flex for alignment */}
-            <img
-              src={logoImage} // Use the imported image
-              width="30" // Initial width, will adjust with CSS
-              height="30" // Initial height, will adjust with CSS
-              className="d-inline-block align-top me-2" // Bootstrap classes for inline-block, vertical alignment, and right margin
-              alt="Jayaris Logo"
-            />
-            <span className="fw-bold text-white">Jayaris</span> {/* Keep the text next to it */}
-          </Navbar.Brand>
-
-          {/* Toggler for mobile */}
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-
-          {/* Collapsible content */}
-          <Navbar.Collapse id="responsive-navbar-nav">
-            {/* Center: Nav Links */}
-            <Nav className="mx-auto">
-              <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/about">About</Nav.Link>
-              <Nav.Link as={Link} to="/services">Services</Nav.Link>
-              <Nav.Link as={Link} to="/testimonials">Testimonials</Nav.Link>
-              <Nav.Link as={Link} to="/career">Career</Nav.Link>
-              <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
-            </Nav>
-
-            {/* Right: Signup + Language - these will also collapse */}
-            <div className="d-flex align-items-center gap-3 ms-lg-auto">
-             <Link to="/auth" style={{ textDecoration: "none" }}>
-               <Button variant="outline-light" size="sm" className="signup-btn">
-                 Login
-               </Button>
-             </Link>
-              <Dropdown align="end">
-                <Dropdown.Toggle variant="outline-light" size="sm" className="language-toggle d-flex align-items-center">
-                  <span className="me-1">🌐</span> En
-                </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item>English</Dropdown.Item>
-                    <Dropdown.Item>हिन्दी</Dropdown.Item>
-                    <Dropdown.Item>Français</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
-            </Navbar.Collapse>
-
-          </Container>
-        </Navbar>
-      </motion.div>
+     <Navbar/>
 
     <motion.section className="testimonial-glass-section" id="testimonials">
       {/* Central Glass Message Box */}

@@ -1,14 +1,15 @@
 import Tilt from "react-parallax-tilt";
 import "./Services.css";
 import { motion } from "framer-motion";
-import { Container, Nav, Navbar, Button, Dropdown } from "react-bootstrap";
+import { Container, Nav, Button, Dropdown } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import React, { useState, useRef, useLayoutEffect, useCallback, useMemo, useEffect } from "react"; // Import useEffect
+import React, { useState, useRef, useLayoutEffect, useCallback, useMemo, useEffect } from "react";
 import logoImage from './image/logo.png';
-import Footer from './components/Footer'; 
-import './components/Footer.css'; 
-
+import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 import { useLocation } from 'react-router-dom';
+import useMediaQuery from './hooks/useMediaQuery'; // Import the useMediaQuery hook
+
 const servicesData = [
   { title: "Web Development", description: "We build fast, secure, and beautifully designed websites that make you stand out online." },
   { title: "App Development", description: "From Android to iOS, we create mobile apps that are smooth, powerful, and user-friendly." },
@@ -17,47 +18,54 @@ const servicesData = [
   { title: "SEO & Digital Marketing", description: "We help you rank higher, reach wider, and grow faster with smart marketing strategies." },
   { title: "AI & Automation", description: "We create intelligent systems that automate tasks and make your business smarter." },
   { title: "CMS Integration", description: "Easily manage your website with tools like WordPress, Strapi, or custom CMS dashboards." },
-  { title: "Blockchain Development", description: "We develop secure blockchain apps and smart contracts for the future of digital trust." },
+  { title: "Blockchain Development", "description": "We develop secure blockchain apps and smart contracts for the future of digital trust." },
   { title: "Content Creation", description: "From blogs to brand copy — we write content that connects and converts." },
   { title: "Business Dashboards", description: "Visual tools that help you track, measure, and manage your company’s performance in real time." },
 ];
 
 const Services = () => {
   const location = useLocation();
+  const isSmallScreen = useMediaQuery('(max-width: 768px)');
 
-   useEffect(() => {
-    // Check if navigation came from a footer link (via location.state)
-    // AND if there's no hash (using the location object from useLocation())
-    if (location.state?.fromFooter && !location.hash) { // <-- CORRECTED LINE
+  useEffect(() => {
+    if (location.state?.fromFooter && !location.hash) {
       window.scrollTo(0, 0);
     }
   }, [location]);
+
   const [virtualIndex, setVirtualIndex] = useState(1);
   const carouselTrackRef = useRef(null);
-  const carouselViewportRef = useRef(null); // Ref for the viewport to attach wheel listener
+  const carouselViewportRef = useRef(null);
   const isAnimatingRef = useRef(false);
 
-  const ARC_RADIUS = 350;
-  const MAX_ROTATION_DEGREES = 25;
+  // --- DYNAMIC CAROUSEL PARAMETERS BASED ON SCREEN SIZE ---
+  const ARC_RADIUS = isSmallScreen ? 190 : 350;
+  const MAX_ROTATION_DEGREES = isSmallScreen ? 35 : 25;
   const MIN_CENTER_SCALE = 1.0;
-  const MAX_SIDE_SCALE = 1.4;
-  const VISIBLE_SLOTS = 7;
-  const HORIZONTAL_SPACING_FACTOR = 2.0;
+  const MAX_SIDE_SCALE = isSmallScreen ? 1.4 : 1.4;
+  const VISIBLE_SLOTS = isSmallScreen ? 5 : 7;
+  const HORIZONTAL_SPACING_FACTOR = isSmallScreen ? 1.1 : 2.0;
+  const BASE_CARD_WIDTH = isSmallScreen ? 120 : 160;
+  // --- END DYNAMIC CAROUSEL PARAMETERS ---
 
-  const BASE_CARD_WIDTH = 160;
+  // Define clonesBefore and clonesAfter here, outside the useMemo for displayItems
+  // This allows them to be accessed by other hooks like logicalIndex and useLayoutEffect
+  const CLONE_COUNT = 2; // Number of items to clone at each end for seamless looping
 
   const displayItems = useMemo(() => {
     if (servicesData.length === 0) return [];
-    const clonesBefore = servicesData.slice(servicesData.length - 1);
-    const clonesAfter = servicesData.slice(0, 1);
+    const clonesBefore = servicesData.slice(servicesData.length - CLONE_COUNT);
+    const clonesAfter = servicesData.slice(0, CLONE_COUNT);
     return [...clonesBefore, ...servicesData, ...clonesAfter];
   }, [servicesData]);
 
   const logicalIndex = useMemo(() => {
     if (servicesData.length === 0) return 0;
-    let index = virtualIndex - 1;
+    // Adjust logical index calculation for more clones
+    let index = virtualIndex - CLONE_COUNT; // Subtract the number of leading clones
     return (index + servicesData.length) % servicesData.length;
-  }, [virtualIndex, servicesData.length]);
+  }, [virtualIndex, servicesData.length, CLONE_COUNT]); // Add CLONE_COUNT to dependencies
+
 
   const handleSwipe = useCallback((direction) => {
     if (isAnimatingRef.current) return;
@@ -71,7 +79,6 @@ const Services = () => {
     });
   }, []);
 
-  // --- EXISTING Touch event handlers for swiping ---
   const startX = useRef(null);
   const handleTouchStart = (e) => {
     startX.current = e.touches[0].clientX;
@@ -89,43 +96,33 @@ const Services = () => {
       handleSwipe("left");
     }
   };
-  // --- END EXISTING Touch event handlers ---
 
-
-  // --- NEW: Mouse Wheel/Touchpad Scroll Handler ---
   const lastWheelTime = useRef(0);
-  const WHEEL_COOLDOWN = 300; // milliseconds to prevent rapid-fire scrolls
+  const WHEEL_COOLDOWN = 300;
 
   const handleWheel = useCallback((e) => {
-    // Prevent default vertical scrolling if carousel is horizontal
     e.preventDefault();
 
     const now = Date.now();
     if (now - lastWheelTime.current < WHEEL_COOLDOWN) {
-      return; // Ignore if scrolled too recently
+      return;
     }
 
     lastWheelTime.current = now;
 
-    // e.deltaY is for vertical scroll. e.deltaX is for horizontal scroll (touchpads, some mice)
-    // We want to primarily listen to horizontal scroll (deltaX).
-    // If deltaX is 0, but deltaY is not, it means a vertical scroll.
-    // We can interpret a vertical scroll as a horizontal one if deltaX isn't available.
-    const scrollDirection = e.deltaX || e.deltaY; // Prefer deltaX, fall back to deltaY
+    const scrollDirection = e.deltaX || e.deltaY;
 
-    if (scrollDirection > 0) { // Scrolling right (or down, interpreted as right)
-      handleSwipe("left"); // Move to the next card
-    } else if (scrollDirection < 0) { // Scrolling left (or up, interpreted as left)
-      handleSwipe("right"); // Move to the previous card
+    if (scrollDirection > 0) {
+      handleSwipe("left");
+    } else if (scrollDirection < 0) {
+      handleSwipe("right");
     }
   }, [handleSwipe]);
 
-
-  // Effect to attach and clean up the wheel event listener
   useEffect(() => {
     const viewportElement = carouselViewportRef.current;
     if (viewportElement) {
-      viewportElement.addEventListener('wheel', handleWheel, { passive: false }); // passive: false to allow preventDefault
+      viewportElement.addEventListener('wheel', handleWheel, { passive: false });
     }
 
     return () => {
@@ -134,15 +131,14 @@ const Services = () => {
       }
     };
   }, [handleWheel]);
-  // --- END NEW Mouse Wheel/Touchpad Scroll Handler ---
-
 
   const getCardTransforms = useCallback((cardIndex) => {
     let relativePos = cardIndex - virtualIndex;
     const totalDisplayItems = displayItems.length;
 
-    if (relativePos > totalDisplayItems / 2) relativePos -= totalDisplayItems;
-    if (relativePos < -totalDisplayItems / 2) relativePos += totalDisplayItems;
+    const halfTotal = totalDisplayItems / 2;
+    if (relativePos > halfTotal) relativePos -= totalDisplayItems;
+    if (relativePos < -halfTotal) relativePos += totalDisplayItems;
 
     const angleStep = MAX_ROTATION_DEGREES / (VISIBLE_SLOTS / 2);
     const angleDegrees = relativePos * angleStep;
@@ -174,94 +170,42 @@ const Services = () => {
     };
   }, [virtualIndex, displayItems.length, ARC_RADIUS, MAX_ROTATION_DEGREES, MIN_CENTER_SCALE, MAX_SIDE_SCALE, VISIBLE_SLOTS, HORIZONTAL_SPACING_FACTOR, BASE_CARD_WIDTH]);
 
-
   useLayoutEffect(() => {
     if (isAnimatingRef.current) return;
     isAnimatingRef.current = true;
     const SNAP_BACK_DELAY = 500;
 
-    if (virtualIndex === displayItems.length - 1) {
+    const totalServices = servicesData.length;
+    // Use the defined CLONE_COUNT here
+    if (virtualIndex >= totalServices + CLONE_COUNT) {
       setTimeout(() => {
-        carouselTrackRef.current.style.transitionDuration = '0s';
-        setVirtualIndex(1);
-        void carouselTrackRef.current.offsetWidth;
-        carouselTrackRef.current.style.transitionDuration = '';
+        if (carouselTrackRef.current) {
+          carouselTrackRef.current.style.transitionDuration = '0s';
+          setVirtualIndex(CLONE_COUNT); // Reset to the first real item index
+          void carouselTrackRef.current.offsetWidth;
+          carouselTrackRef.current.style.transitionDuration = '';
+        }
         isAnimatingRef.current = false;
       }, SNAP_BACK_DELAY);
-    } else if (virtualIndex === 0) {
+    } else if (virtualIndex < CLONE_COUNT) { // If it's moved to the last clone before the real items (index 0 or 1)
       setTimeout(() => {
-        carouselTrackRef.current.style.transitionDuration = '0s';
-        setVirtualIndex(displayItems.length - 2);
-        void carouselTrackRef.current.offsetWidth;
-        carouselTrackRef.current.style.transitionDuration = '';
+        if (carouselTrackRef.current) {
+          carouselTrackRef.current.style.transitionDuration = '0s';
+          setVirtualIndex(totalServices + CLONE_COUNT - 1); // Reset to the last real item index
+          void carouselTrackRef.current.offsetWidth;
+          carouselTrackRef.current.style.transitionDuration = '';
+        }
         isAnimatingRef.current = false;
       }, SNAP_BACK_DELAY);
     } else {
       isAnimatingRef.current = false;
     }
-  }, [virtualIndex, displayItems.length]);
+  }, [virtualIndex, displayItems.length, servicesData.length, CLONE_COUNT]);
+
 
   return (
     <>
-      <motion.div
-      initial={{ opacity: 0, y: -30, filter: "blur(8px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-      style={{ position: 'fixed', width: '100%', zIndex: 9999 }}
-    >
-      <Navbar expand="lg" fixed="top" className="glass-navbar px-4">
-        <Container fluid className="d-flex justify-content-between align-items-center">
-
-          {/* Left: Jayaris Brand - UPDATED */}
-          <Navbar.Brand as={Link} to="/" className="d-flex align-items-center"> {/* Added as={Link} to="/" and d-flex for alignment */}
-            <img
-              src={logoImage} // Use the imported image
-              width="30" // Initial width, will adjust with CSS
-              height="30" // Initial height, will adjust with CSS
-              className="d-inline-block align-top me-2" // Bootstrap classes for inline-block, vertical alignment, and right margin
-              alt="Jayaris Logo"
-            />
-            <span className="fw-bold text-white">Jayaris</span> {/* Keep the text next to it */}
-          </Navbar.Brand>
-
-          {/* Toggler for mobile */}
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-
-          {/* Collapsible content */}
-          <Navbar.Collapse id="responsive-navbar-nav">
-            {/* Center: Nav Links */}
-            <Nav className="mx-auto">
-              <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/about">About</Nav.Link>
-              <Nav.Link as={Link} to="/services">Services</Nav.Link>
-              <Nav.Link as={Link} to="/testimonials">Testimonials</Nav.Link>
-              <Nav.Link as={Link} to="/career">Career</Nav.Link>
-              <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
-            </Nav>
-
-            {/* Right: Signup + Language - these will also collapse */}
-            <div className="d-flex align-items-center gap-3 ms-lg-auto">
-              <Link to="/auth" style={{ textDecoration: "none" }}>
-                <Button variant="outline-light" size="sm" className="signup-btn">
-                  Login
-                </Button>
-              </Link>
-              <Dropdown align="end">
-                <Dropdown.Toggle variant="outline-light" size="sm" className="language-toggle d-flex align-items-center">
-                  <span className="me-1">🌐</span> En
-                </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item>English</Dropdown.Item>
-                    <Dropdown.Item>हिन्दी</Dropdown.Item>
-                    <Dropdown.Item>Français</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
-            </Navbar.Collapse>
-
-          </Container>
-        </Navbar>
-      </motion.div>
+      <Navbar/>
 
       <section
         className="services-carousel-section"
@@ -269,7 +213,7 @@ const Services = () => {
         onTouchEnd={handleTouchEnd}
       >
         <h2 className="services-heading">Expert Services We Offer</h2>
-        <div className="carousel-viewport" ref={carouselViewportRef}> {/* Attach ref here */}
+        <div className="carousel-viewport" ref={carouselViewportRef}>
           <div className="carousel-3d-container">
             <motion.div
               className="carousel-track"
@@ -313,14 +257,13 @@ const Services = () => {
           <p>{servicesData[logicalIndex].description}</p>
         </div>
 
-        {/* You can still keep the navigation arrows for explicit clicks/taps */}
         <div className="carousel-nav-arrows">
           <Button variant="outline-light" onClick={() => handleSwipe("right")}>&lt;</Button>
           <Button variant="outline-light" onClick={() => handleSwipe("left")}>&gt;</Button>
         </div>
       </section>
       <Footer />
-    </>
+      </>
   );
 };
 

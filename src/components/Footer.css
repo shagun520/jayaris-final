@@ -18,6 +18,7 @@
 .main-footer .footer-text {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
+  font-size: 13px;
   text-align: justify;
 }
 
@@ -62,8 +63,60 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
+  /* Adjusted general footer heading for mobile, still applies to non-dropdown headings */
   .main-footer .footer-heading {
     margin-bottom: 1rem;
     padding-bottom: 0.3rem;
+  }
+
+  /* --- NEW MOBILE DROPDOWN STYLES --- */
+
+  /* Styles for the clickable header of the dropdown */
+  .main-footer .footer-dropdown-header {
+    display: flex; /* Use flex to align heading and icon */
+    justify-content: space-between; /* Space out heading and icon */
+    align-items: center; /* Vertically center them */
+    cursor: pointer; /* Indicate it's clickable */
+    padding: 0.8rem 0; /* Add padding for a larger click area */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Keep the separator line */
+    margin-bottom: 0.5rem; /* Space after the header, when the content is collapsed or just before it */
+  }
+
+  /* Specific adjustments for the heading text inside the dropdown header */
+  .main-footer .footer-dropdown-header .footer-heading {
+    margin-bottom: 0; /* Remove default bottom margin for headings inside the dropdown header */
+    border-bottom: none; /* Remove individual border for headings inside the dropdown header */
+    padding-bottom: 0;
+  }
+
+  /* Style for the dropdown chevron icon */
+  .main-footer .footer-dropdown-header .dropdown-icon {
+    font-size: 1rem;
+    transition: transform 0.3s ease; /* Smooth rotation for the icon */
+  }
+
+  /* Styles for the collapsible list of links */
+  .main-footer .footer-links {
+      max-height: 500px; /* A large value to allow full expansion */
+      overflow: hidden; /* Hide content that exceeds max-height */
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition */
+      opacity: 1; /* Fully visible when expanded */
+  }
+
+  /* Style when the list is collapsed */
+  .main-footer .footer-links.collapsed {
+      max-height: 0; /* Collapse by setting max-height to 0 */
+      opacity: 0; /* Fade out content */
+      margin-bottom: 0; /* No margin when collapsed */
+  }
+
+  /* Ensure links have proper spacing when expanded */
+  .main-footer .footer-links:not(.collapsed) {
+      padding-top: 0.5rem; /* Add some space above links when expanded */
+  }
+
+  /* Ensure some spacing between list items even when they're part of a dropdown */
+  .main-footer .footer-links li {
+    margin-bottom: 0.8rem;
   }
 }

@@ -1,145 +1,67 @@
 
-/* Navbar styles (from your original code) */
-.glass-navbar {
-  background-color: rgba(0, 0, 0, 0.7) !important; /* darker and more visible */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-}
-
-.navbar .nav-link {
-  color: #ffffff !important;
-  font-weight: 500;
-  margin: 0 10px;
-  transition: color 0.3s ease;
-}
-
-.navbar .nav-link:hover {
-  color: #606dc5 !important;
-}
-
-.signup-btn {
-  background-color: #33396d;
-  color: #ffffff !important;
-  font-weight: 600;
-  text-transform: lowercase;
-  padding: 4px 12px;
-  border: none !important;
-  border-radius: 8px;
-}
-
-.language-toggle {
-  font-weight: 500;
-  color: white !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.btn-outline-light:hover {
-  background-color: #33396d;
-  color: #ffffff;
-}
-.navbar-brand img {
-  height: 2.9rem; /* Adjust height using rem for responsiveness */
-  width: auto;   /* Maintain aspect ratio */
-  vertical-align: middle; /* Ensure it aligns nicely with text */
-  margin-right: 0.5rem; /* Space between logo and text */
-}
-
-/* You might want to adjust the Navbar.Brand font size if the logo is large */
-.navbar-brand .fw-bold {
-  font-size: 1.5rem; /* Example: adjust brand text size */
-}
-
-/* Adjust for smaller screens if needed */
-@media (max-width: 991.98px) { /* Adjust breakpoint to match your navbar.expand="lg" */
-  .navbar-brand img {
-    height: 1.8rem; /* Slightly smaller logo on mobile */
-    margin-right: 0.3rem;
-  }
-  .navbar-brand .fw-bold {
-    font-size: 1.3rem;
-  }
-}
-/* ===== Base Styles for Services Section ===== */
-/* ... existing navbar styles ... */
-/* ... existing navbar styles ... */
-
 /* ===== Base Styles for Services Section ===== */
 .services-carousel-section {
   background: linear-gradient(135deg, #1a2a6c, #080226, #26033b);
   color: white;
-  padding: 80px 0 20px; /* Reduced top padding, added bottom padding */
+  padding: 80px 0 20px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Align items to the start (top) */
+  justify-content: flex-start;
   position: relative;
   overflow: hidden;
 }
 
-/* ===== Heading ===== */
 .services-heading {
   font-size: 2.8rem;
   font-weight: 700;
   text-align: center;
-  margin: 1.2rem 0 0.8rem; /* Further reduced top and bottom margin */
+  margin: 1.2rem 0 0.8rem;
   background: linear-gradient(90deg, #d8d5e0db, #5276be);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* ===== Carousel Viewport (The visible window) ===== */
 .carousel-viewport {
   width: 100vw;
   max-width: none;
-  height: 480px; /* Increased height to accommodate larger cards */
+  height: 480px;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
 }
 
-/* ===== Carousel 3D Container (Applies perspective) ===== */
 .carousel-3d-container {
   width: 100%;
   height: 100%;
   position: relative;
-  perspective: 1000px; /* Adjust this value for more/less perspective distortion */
+  perspective: 1000px;
   perspective-origin: center center;
 }
 
-/* ===== Carousel Track (Container for 3D positioned cards) ===== */
 .carousel-track {
   width: 100%;
   height: 100%;
   position: absolute;
-  left: 40%; /* Adjusted from 50% to 49% to shift slightly left */
+  left: 40%; /* This will be overridden for mobile */
   top: 50%;
   transform: translate(-50%, -50%);
   transform-style: preserve-3d;
 }
-/* ===== Carousel Card Wrapper (Motion.div that holds Tilt card) ===== */
+
 .service-card-3d-wrapper {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   transform-style: preserve-3d;
-  margin-top: -260px;
+  margin-top: -260px; /* This will be overridden for mobile */
 }
 
-/* ===== Glass Cards (Content of each card) ===== */
 .service-card {
-  width:300px; /* Fixed width for base card */
-  height: 400px; /* Fixed height for base card */
+  width: 300px;
+  height: 400px;
   background: rgba(30, 32, 45, 0.25);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -150,26 +72,24 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  
+
   padding: 1rem;
   color: #ffffff;
   cursor: pointer;
 }
 .service-card h5 {
-  font-size: 1.7rem; /* Adjust this value as needed (e.g., 1.2rem, 1.4rem, 0.9rem) */
-  margin: 0; /* Remove default margin from h5 if present */
-  line-height: 1.2; /* Adjust line-height for better spacing if needed */
+  font-size: 1.7rem;
+  margin: 0;
+  line-height: 1.2;
 }
-/* Center card visual styling (no transforms here, just other styles) */
 .service-card.center {
   background: linear-gradient(to bottom right, rgba(106, 90, 205, 0.2), rgba(30, 30, 60, 0.4));
   box-shadow: 0 15px 40px rgba(106, 90, 205, 0.4);
 }
 
-/* ===== Description Box ===== */
 .service-description {
-  margin-top: -4.9rem; /* Further reduced margin-top */
-  width: 700px;
+  margin-top: -4.9rem; /* This will be overridden for mobile */
+  width: 700px; /* This will be overridden for mobile */
   text-align: center;
   padding: 1.5rem;
   background: rgba(20, 20, 40, 0.3);
@@ -182,21 +102,20 @@
 }
 
 .service-description h4 {
-  font-size: 1.4rem;
+  font-size: 1.89rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
   color: #fff;
 }
 
 .service-description p {
-  font-size: 1rem;
+  font-size: 1.6rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* ===== Navigation Arrows ===== */
 .carousel-nav-arrows {
-  margin-top: 15px; /* Slightly reduced margin-top */
+  margin-top: 15px; /* This will be overridden for mobile */
   display: flex;
   gap: 15px;
   z-index: 5;
@@ -216,45 +135,217 @@
   background-color: rgba(255, 255, 255, 0.25);
   border-color: rgba(255, 255, 255, 0.4);
 }
-
 /* ===== Responsive (Adjust for smaller screens) ===== */
+
+/* Adjustments for screens up to 992px wide (Tablets in landscape, small desktops) */
 @media (max-width: 992px) {
+  .services-carousel-section {
+    padding-top: 80px; /* Ensure enough space for fixed navbar */
+    padding-bottom: 10px;
+    justify-content: flex-start;
+    min-height: auto !important; /* Allow the section to shrink to its content's minimum height */
+    height: auto !important; 
+  }
+  .services-heading {
+    font-size: 2.5rem;
+    margin-top: 1rem; /* Positive margin to ensure visibility */
+    margin-bottom: 20px; /* Space below heading */
+  }
   .carousel-viewport {
-    height: 420px; /* Adjusted */
+    height: 380px;
   }
   .carousel-3d-container {
     perspective: 800px;
   }
-  .service-card {
-    width: 140px;
-    height: 180px;
+  .carousel-track {
+    left: 45%; /* Ensure horizontal centering */
+    transform: translate(-50%, -50%); /* For 3D transformations */
   }
-}
-
-@media (max-width: 768px) {
-  .carousel-viewport {
-    height: 380px; /* Adjusted */
+  .service-card-3d-wrapper {
+    margin-top: -160px; /* Less aggressive negative margin */
   }
   .service-card {
-    width: 120px;
-    height: 160px;
+    width: 230px;
+    height: 320px;
   }
-}
-
-@media (max-width: 576px) {
-  .carousel-viewport {
-    height: 330px; /* Adjusted */
-  }
-  .service-card {
-    width: 100px;
-    height: 140px;
-    font-size: 0.8rem;
-  }
-  .services-heading {
-    font-size: 2.2rem;
+  .service-card h5 {
+    font-size: 1.4rem;
   }
   .service-description {
+    width: 90%;
+    max-width: 550px;
+    margin-top: -2rem; /* Less aggressive negative margin */
     padding: 1rem;
+  }
+  .service-description h4 {
+    font-size: 1.2rem;
+  }
+  .service-description p {
     font-size: 0.9rem;
+  }
+  .carousel-nav-arrows {
+    margin-top: 5px;
+  }
+}
+
+/* Adjustments for screens up to 768px wide (Tablets in portrait, larger phones) */
+@media (max-width: 768px) {
+  .services-carousel-section {
+    padding-top: 70px; /* Consistent top padding for fixed navbar */
+    padding-bottom: 5px;
+    justify-content: flex-start; /* Align content to the top, easier for mobile flow */
+    min-height: auto !important; /* Allow the section to shrink to its content's minimum height */
+    height: auto !important; 
+  }
+  .services-heading {
+    font-size: 2rem;
+    margin-top: 1.8rem !important; /* Small positive margin */
+    margin-bottom: 5px !important; /* Space below heading */
+  }
+  .carousel-viewport {
+    height: 320px;
+  }
+  .carousel-3d-container {
+    perspective: 700px;
+  }
+  .carousel-track {
+    left: 35% !important; /* CRUCIAL: Center carousel horizontally */
+  }
+  .service-card-3d-wrapper {
+    margin-top: -120px;
+  }
+  .service-card {
+    width: 180px;
+    height: 250px;
+  }
+  .service-card h5 {
+    font-size: 1.2rem;
+  }
+  .service-description {
+    width: 95%;
+    margin-top: -1rem;
+    padding: 0.9rem;
+  }
+  .service-description h4 {
+    font-size: 1.1rem;
+  }
+  .service-description p {
+    font-size: 0.85rem;
+  }
+  .carousel-nav-arrows {
+    margin-top: 5px;
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Adjustments for screens up to 576px wide (Most phones) */
+@media (max-width: 576px) {
+  .services-carousel-section {
+    padding-top: 60px; /* Consistent top padding for fixed navbar */
+    padding-bottom: 0px;
+    justify-content: flex-start;
+    min-height: auto !important; /* Allow the section to shrink to its content's minimum height */
+    height: auto !important; 
+  }
+  .services-heading {
+    font-size: 1.6rem;
+    margin-top: 0.5rem; /* Positive margin to separate from top */
+    margin-bottom: 10px;
+  }
+  .carousel-viewport {
+    height: 280px;
+    margin-top: -20px; /* Adjust as needed, less aggressive */
+  }
+  .carousel-3d-container {
+    perspective: 550px;
+  }
+  .carousel-track {
+    left: 50%; /* CRUCIAL: Center carousel horizontally */
+    transform: translate(-50%, -50%); /* Ensure it's truly centered for 3D */
+  }
+  .service-card-3d-wrapper {
+    margin-top: -60px; /* Less aggressive negative margin */
+  }
+  .service-card {
+    width: 140px;
+    height: 200px;
+    padding: 0.7rem;
+  }
+  .service-card h5 {
+    font-size: 1rem;
+  }
+  .service-description {
+    width: 98%;
+    margin-top: 0.5rem; /* Small positive margin */
+    padding: 0.7rem;
+  }
+  .service-description h4 {
+    font-size: 1.4rem;
+  }
+  .service-description p {
+
+    font-size: 0.89rem;
+  }
+  .carousel-nav-arrows {
+    margin-top: 0;
+    gap: 6px;
+  }
+  .carousel-nav-arrows .btn {
+    font-size: 1rem;
+    padding: 2px 8px;
+  }
+}
+
+/* Adjustments for very small screens (e.g., iPhone SE, older phones, max-width: 320px) */
+@media (max-width: 320px) {
+  .services-carousel-section {
+    padding-top: 55px !important; /* Slightly smaller consistent top padding for very small screens */
+    padding-bottom: 0px !important;
+  }
+  .services-heading {
+    font-size: 1.2rem !important;
+    margin-top: 0.5rem !important; /* Consistent small positive margin */
+    margin-bottom: 5px !important;
+  }
+  .carousel-viewport {
+    height: 200px !important;
+    margin-top: -20px !important;
+  }
+  .carousel-3d-container {
+    perspective: 450px !important;
+  }
+  .carousel-track {
+    left: 50% !important; /* CRUCIAL: Ensure centered */
+    transform: translate(-50%, -50%) !important; /* Ensure it's truly centered */
+  }
+  .service-card-3d-wrapper {
+    margin-top: -40px !important;
+  }
+  .service-card {
+    width: 110px !important;
+    height: 150px !important;
+    padding: 0.5rem !important;
+  }
+  .service-card h5 {
+    font-size: 0.8rem !important;
+  }
+  .service-description {
+    margin-top: 0.5rem !important;
+    padding: 0.5rem !important;
+  }
+  .service-description h4 {
+    font-size: 0.8rem !important;
+  }
+  .service-description p {
+    font-size: 0.75rem !important;
+  }
+  .carousel-nav-arrows {
+    margin-top: 0 !important;
+    gap: 4px !important;
+  }
+  .carousel-nav-arrows .btn {
+    font-size: 0.9rem !important;
+    padding: 1px 6px !important;
   }
 }

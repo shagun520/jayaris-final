@@ -1,72 +1,3 @@
-
-.glass-navbar {
-  background-color: rgba(0, 0, 0, 0.7) !important; /* darker and more visible */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-}
-
-.navbar .nav-link {
-  color: #ffffff !important;
-  font-weight: 500;
-  margin: 0 10px;
-  transition: color 0.3s ease;
-}
-
-.navbar .nav-link:hover {
-  color: #606dc5 !important;
-}
-
-.signup-btn {
-  background-color: #33396d;
-  color: #ffffff !important;
-  font-weight: 600;
-  text-transform: lowercase;
-  padding: 4px 12px;
-  border: none !important;
-  border-radius: 8px;
-}
-
-.language-toggle {
-  font-weight: 500;
-  color: white !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.btn-outline-light:hover {
-  background-color: #33396d;
-  color: #ffffff;
-}
-.navbar-brand img {
-  height: 2.9rem; /* Adjust height using rem for responsiveness */
-  width: auto;   /* Maintain aspect ratio */
-  vertical-align: middle; /* Ensure it aligns nicely with text */
-  margin-right: 0.5rem; /* Space between logo and text */
-}
-
-/* You might want to adjust the Navbar.Brand font size if the logo is large */
-.navbar-brand .fw-bold {
-  font-size: 1.5rem; /* Example: adjust brand text size */
-}
-
-/* Adjust for smaller screens if needed */
-@media (max-width: 991.98px) { /* Adjust breakpoint to match your navbar.expand="lg" */
-  .navbar-brand img {
-    height: 1.8rem; /* Slightly smaller logo on mobile */
-    margin-right: 0.3rem;
-  }
-  .navbar-brand .fw-bold {
-    font-size: 1.3rem;
-  }
-}
 /* AuthPage.css */
 
 /* General Body Styling - Dark background */
@@ -117,7 +48,6 @@ body {
   align-items: flex-start;
   background: rgba(24, 24, 24, 0.36); /* Slightly darker glass for left panel */
   border-right: 1px solid rgba(255, 255, 255, 0.05); /* Separator line */
-  /* These will be overridden by media query for mobile */
 }
 
 .auth-left-title {
@@ -277,7 +207,6 @@ body {
 }
 
 /* General styling for inputs in the auth forms (used by signup, can also be used by login) */
-/* This is a general style for inputs that has been refined. */
 .glass-input-auth {
     width: 100%;
     padding: 12px 15px; /* Base padding */
@@ -425,16 +354,34 @@ body {
     filter: invert(1); /* Makes the SVG white if its base color is black */
 }
 
-/* --- Responsive Adjustments for Sign Up Form --- */
+/* --- Responsive Adjustments --- */
+/* Media query for screens up to 768px wide (typical tablets and mobiles) */
 @media (max-width: 768px) {
+    /* Hide the left panel completely */
+    .auth-left-panel {
+        display: none;
+    }
+
+    /* Adjust the main container for single-column layout on smaller screens */
+    .auth-container {
+        max-width: 90%; /* Allow it to take more width on small screens */
+        margin: 20px; /* Add some margin from the screen edges */
+        border-radius: 15px; /* Slightly smaller border-radius */
+    }
+
+    /* Adjust padding for the right panel (form) on smaller screens */
+    .auth-right-panel {
+        padding: 25px; /* Reduce padding slightly for mobile */
+    }
+
     /* Stack two-column fields vertically on mobile */
     .form-row {
         flex-direction: column;
         gap: 15px; /* Maintain gap between stacked fields */
     }
 
-    /* Ensure padding for mobile forms */
-    .auth-right-panel {
-        padding: 25px;
+    /* Optionally adjust title size on smaller screens */
+    .form-title {
+        font-size: 1.8rem;
     }
 }
