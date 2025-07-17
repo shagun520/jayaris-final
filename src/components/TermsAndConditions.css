@@ -1,0 +1,188 @@
+body {
+  /* Ensure body takes full height for the gradient */
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif; /* Use your preferred font */
+  color: #e0e0e0; /* Light grey for general text */
+
+}
+
+.terms-page-wrapper {
+    background-image: url('../image/policybg.jpeg') !important;
+   background-size: cover !important; /* Ensures the image covers the entire background */
+  background-position: center center !important; /* Centers the image */
+  background-attachment: fixed !important;
+  padding: 40px 0; /* Vertical padding around the entire content */
+  min-height: calc(100vh - 80px); /* Ensure wrapper covers viewport minus padding */
+  display: flex; /* Use flex to center content */
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align content to the top within the flex container */
+}
+
+/* --- Content Container (for max-width and internal spacing) --- */
+.terms-content-container.container { /* Target react-bootstrap Container */
+    margin-top: 30px;
+  max-width: 900px; /* Max width for the content column */
+  width: 100%; /* Ensure it takes full width up to max-width */
+  padding: 0 20px; /* Padding on sides for smaller screens */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* --- Glass Morphism Card --- */
+.terms-glass-card {
+    background: rgba(15, 15, 21, 0.82); /* Darker navy, semi-transparent */
+  backdrop-filter: blur(12px); /* Stronger blur for prominent effect */
+  border: 1px solid rgba(19, 15, 21, 0.3); /* Purple border, semi-transparent */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); /* Deeper shadow */
+  padding: 40px; /* Internal padding */
+  color: #e0e0e0; /* Light text color */
+  line-height: 1.7;
+  text-align: left; /* Ensure text is left-aligned */
+  margin: 20px 0; /* Add some margin top/bottom for spacing */
+}
+
+/* --- Headings --- */
+.terms-glass-card h1 {
+  font-size: 3.2rem;
+  color: #d4e5ff; /* Bright purple for main heading */
+  margin-bottom: 25px;
+  font-weight: 700;
+  text-align: center; /* Center main title */
+  line-height: 1.2;
+}
+
+.terms-glass-card .effective-dates {
+  font-size: 0.95rem;
+  color: #ccc;
+  text-align: center;
+  margin-bottom: 40px; /* More space after dates */
+}
+
+.terms-glass-card h2.section-heading {
+  font-size: 2.2rem;
+  color: #d4e5ff; /* Slightly darker purple for section headings */
+  margin-top: 50px; /* Generous top margin to achieve "max 2 headings per viewport" feel */
+  margin-bottom: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(142, 68, 173, 0.2); /* Subtle separator */
+  padding-bottom: 10px;
+}
+
+.terms-glass-card h3 {
+  font-size: 1.4rem;
+  color: #d4e5ff; /* Lighter purple for sub-headings */
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* --- Paragraphs and Lists --- */
+.terms-glass-card p {
+  margin-bottom: 15px;
+}
+
+.terms-glass-card ul {
+  list-style: disc;
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+
+.terms-glass-card ul li {
+  margin-bottom: 8px;
+  padding-left: 5px; /* Space for the bullet */
+  color: #f0f0f0;
+}
+
+/* Special styling for the warning note */
+.terms-glass-card .warning-note {
+  font-weight: bold;
+  color: #ffda6a; /* A noticeable warning color (yellowish) */
+  background-color: rgba(255, 218, 106, 0.1);
+  border-left: 4px solid #ffda6a;
+  padding: 10px 15px;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+/* Service list specific formatting */
+.terms-glass-card .service-list {
+  margin-bottom: 20px;
+}
+.terms-glass-card .service-list h3 {
+  margin-bottom: 0; /* Reduce space after sub-heading in list */
+}
+.terms-glass-card .service-list p {
+  margin-top: 5px;
+  margin-left: 15px; /* Indent paragraph under sub-heading */
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+
+/* Contact Info */
+.contact-info {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(142, 68, 173, 0.2);
+}
+
+.contact-info p {
+  margin-bottom: 8px;
+}
+
+.contact-info a {
+  color: #9b59b6; /* Purple for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #c0a8e0; /* Lighter purple on hover */
+  text-decoration: underline;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .terms-glass-card {
+    padding: 30px 20px; /* Reduce padding on smaller screens */
+    margin: 15px;
+  }
+
+  .terms-glass-card h1 {
+    font-size: 2.5rem;
+  }
+
+  .terms-glass-card h2.section-heading {
+    font-size: 1.8rem;
+    margin-top: 40px; /* Keep good spacing */
+  }
+
+  .terms-glass-card h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-glass-card {
+    padding: 20px 15px;
+    border-radius: 15px;
+  }
+
+  .terms-glass-card h1 {
+    font-size: 2rem;
+  }
+
+  .terms-glass-card h2.section-heading {
+    font-size: 1.6rem;
+    margin-top: 30px;
+  }
+
+  .terms-glass-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .terms-glass-card .effective-dates {
+    font-size: 0.85rem;
+  }
+}

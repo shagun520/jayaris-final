@@ -280,30 +280,6 @@ const AuthPage = () => {
       {/* Auth Body */}
       <div className="auth-page-wrapper">
         <div className="auth-container">
-          {/* Left Column - DYNAMIC CONTENT HERE */}
-          <div className="auth-left-panel">
-            {mode === "login" && (
-              <>
-                <h1 className="auth-left-title">LOGIN</h1>
-                <p className="auth-left-greeting">Hey welcome back!</p>
-                <p className="auth-left-message">We hope you had a great day</p>
-              </>
-            )}
-            {mode === "signup" && ( /* This is the NEW part */
-              <>
-                <h1 className="auth-left-title">SIGN UP</h1> {/* Or "JOIN US!" or "CREATE ACCOUNT" */}
-                <p className="auth-left-greeting">Welcome Aboard!</p>
-                <p className="auth-left-message">Join our community and unlock exclusive features.</p>
-              </>
-            )}
-            {mode === "forgot" && ( /* Optional: For Forgot Password mode */
-              <>
-                <h1 className="auth-left-title">RESET</h1>
-                <p className="auth-left-greeting">Need help?</p>
-                <p className="auth-left-message">Enter your email to reset your password.</p>
-              </>
-            )}
-          </div>
 
           {/* Right Column - Dynamic Form */}
           <div className="auth-right-panel">

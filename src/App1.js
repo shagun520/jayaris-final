@@ -15,6 +15,7 @@ import Contact from './Contact';
 import Testimonial from './testimonial.js';
 import Jayaris from './Jayris';
 import ScrollToTop from './ScrollToTop';
+import useMediaQuery from './hooks/useMediaQuery';
 import { Container, Button,Row,Col} from "react-bootstrap";
 import "./App1.css";
 
@@ -23,7 +24,9 @@ import client2 from './image/client2.jpeg';
 import client3 from './image/client3.jpeg';
 import Footer from './components/Footer'; 
 import Navbar from './components/Navbar'; 
-import './components/Footer.css';
+import TermsAndConditions from './components/TermsAndConditions';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import CookiePolicy from './components/CookiePolicy';
 const points = ["Global Delivery", "Top Talent", "Agile Execution", "Post-Delivery Support"];
 
 const feedbackList = [
@@ -60,36 +63,11 @@ useEffect(() => {
     useEffect(() => {
   AOS.init({ duration: 1000, once: true });
 }, []);
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
-  }, []);
 
   const [currentPointIndex, setCurrentPointIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Dynamic typing for Why Jayaris
-useEffect(() => {
-  const fullText = points[currentPointIndex];
-  let i = 0;
-  let displayText = "";
-
-  const interval = setInterval(() => {
-    displayText += fullText[i];
-    setTypedText(displayText);
-    i++;
-    if (i >= fullText.length) clearInterval(interval);
-  }, 80);
-
-  const timeout = setTimeout(() => {
-    setCurrentPointIndex((prev) => (prev + 1) % points.length);
-  }, fullText.length * 80 + 1000);
-
-  return () => {
-    clearInterval(interval);
-    clearTimeout(timeout);
-  };
-}, [currentPointIndex]);
 
 const [showTestimonialCards, setShowTestimonialCards] = useState(false);
 
@@ -108,6 +86,12 @@ useEffect(() => {
 
   return () => section && observer.unobserve(section);
 }, []);
+
+const isSmallScreen = useMediaQuery('(max-width: 768px)'); // Use your media query hook here
+
+// Define initial rotation based on screen size
+const initialRotationX = isSmallScreen ? 10 : 30; // Less rotation on small screens
+const initialRotationY = isSmallScreen ? 10 : 30;
 
 const serviceData = [
   {
@@ -194,6 +178,7 @@ const serviceData = [
     {serviceData.map((card, index) => (
       <Tilt
         key={index}
+        scale={1.09}
         tiltMaxAngleX={10}
         tiltMaxAngleY={10}
         glareEnable={false}
@@ -201,9 +186,25 @@ const serviceData = [
       >
         <motion.div
           className="glass-card text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+          initial={{
+            opacity: 0,
+            y: 30, // Starts slightly below its final position
+            rotateX: initialRotationX, // Apply initial rotation based on screen size
+            rotateY: initialRotationY, // Apply initial rotation based on screen size
+            scale: 0.8 // Start slightly smaller for a combined effect
+          }}
+          whileInView={{
+            opacity: 1, // Fades in
+            y: 0, // Slides up to its final position
+            rotateX: 0, // Animates to no rotation
+            rotateY: 0, // Animates to no rotation
+            scale: 1 // Animates to full size
+          }}
+          transition={{
+            duration: 0.5, // Slightly longer duration for the rotation to be smooth
+            ease: "easeOut", // Smooth easing function
+            delay: 0.3 + index * 0.1 // Keeps the staggered delay for each card
+          }}
         >
           {/* PNG Icon */}
           <img src={card.icon} alt="icon" className="icon-png mb-3" />
@@ -214,6 +215,7 @@ const serviceData = [
     ))}
   </motion.div>
 </section>
+
 
 {/* Service Section */}
 <section className="expert-services">
@@ -339,7 +341,7 @@ const serviceData = [
       <section className="call-to-action text-white py-5">
         <Container className="text-center">
           <h2>Schedule a Free Consultation</h2>
-          <Button variant="light" size="lg" href="#contact" data-aos="zoom-in">Contact Us</Button>
+          <Button variant="light" size="lg" href="/contact" data-aos="zoom-in">Contact Us</Button>
         </Container>
       </section>
 
@@ -359,14 +361,11 @@ export default function App1() {
       <Route path="/testimonials" element={<Testimonial />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/career" element={<Jayaris />} />
+      <Route path="/terms" element={<TermsAndConditions />} /> 
+      <Route path="/privacy" element={<PrivacyPolicy />} /> 
+      <Route path="/cookie-policy" element={<CookiePolicy />} />
        {/* Add more routes for your footer links that go to separate pages */}
-          <Route path="/career" element={<p>Career Page Placeholder</p>} />
-          <Route path="/testimonials" element={<p>Testimonials Page Placeholder</p>} />
-          <Route path="/contact" element={<p>Contact Us Page Placeholder</p>} />
           <Route path="/blog" element={<p>Blog Page Placeholder</p>} />
-          <Route path="/terms" element={<p>Terms & Conditions Page Placeholder</p>} />
-          <Route path="/privacy" element={<p>Privacy Policy Page Placeholder</p>} />
-          <Route path="/cookie-policy" element={<p>Cookie Policy Page Placeholder</p>} />
           <Route path="/sitemap" element={<p>Sitemap Page Placeholder</p>} />
     </Routes>
     </>

@@ -8,9 +8,9 @@ import { Typewriter } from "react-simple-typewriter"; // This is not used in the
 import Tilt from "react-parallax-tilt";
 import logoImage from './image/logo.png';
 import Footer from './components/Footer';
-import './components/Footer.css';
 import { useLocation } from 'react-router-dom';
 import useMediaQuery from './hooks/useMediaQuery';
+
 
 const AboutUs = () => {
   const location = useLocation();
@@ -35,28 +35,18 @@ const AboutUs = () => {
     };
   }, []);
 
-   // This object correctly defines different delays based on screen size
    const animationDelays = {
-    // Original glass-card1 finishes animation around 0.9s (delay) + 1.0s (duration) = 1.9s from page load.
-    // So, we want missionWrapper to start animating AFTER that on small screens.
-    missionWrapper: isSmallScreen ? 2.2 : 0.0, // Start mission section significantly later on mobile (e.g., 2.2s after page load)
-
-    // These delays are *relative* to when the 'missionWrapper' starts its animation.
-    // We can also increase these slightly for a more deliberate mobile reveal.
-    missionHeading: isSmallScreen ? 0.7 : 0.2, // Base delay for heading after wrapper appears
+    
+    missionWrapper: isSmallScreen ? 2.2 : 3.0, // Start mission section significantly later on mobile (e.g., 2.2s after page load)
+    missionHeading: isSmallScreen ? 0.7 : 3.5, // Base delay for heading after wrapper appears
     missionHeadingWordStagger: isSmallScreen ? 0.15 : 0.05, // Increased stagger for individual words
     missionPara: isSmallScreen ? 1.2 : 0.3, // Ensure para comes after heading and heading words are done
 
-    // Vision section should start animating only after the mission section is clearly visible.
-    // If missionWrapper starts at 2.2s, its content animates for ~1.5s, so mission section finishes around 2.2 + ~1.5 = ~3.7s.
-    // Let's give it a generous buffer.
     visionSection: isSmallScreen ? 1.0 : 0.1, // Start vision section later on mobile (e.g., 4.0s after page load)
-    visionHeading: isSmallScreen ? 0.7 : 0.2,
+    visionHeading: isSmallScreen ? 0.7 : 0.4,
     visionHeadingWordStagger: isSmallScreen ? 0.15 : 0.05,
     visionPara: isSmallScreen ? 1.2 : 0.3,
 
-    // Values section should start animating only after the vision section is clearly visible.
-    // If visionSection starts at 4.0s, its content animates for ~1.5s, so vision section finishes around 4.0 + ~1.5 = ~5.5s.
     valuesContainer: isSmallScreen ? 2.3 : 0.1, // Start values section later on mobile (e.g., 5.8s after page load)
     valuesHeading: isSmallScreen ? 0.7 : 0.3,
     valuesBoxStagger: isSmallScreen ? 0.2 : 0.06, // Slightly more stagger for boxes
@@ -69,18 +59,6 @@ const AboutUs = () => {
   {/* first viewport */}
   <div className="aboutus-section">
   <div className="right-section">
-    {/* Logo (always visible) */}
-    <motion.img
-      src={logoImage}
-      alt="Jayaris Logo"
-      className="jayaris-logo-about"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut", delay: 0 }}
-      layout
-    />
-
-    {/* Tagline container with space preserved */}
     <div className="tagline-placeholder">
       <motion.p
         className="jayaris-tagline"

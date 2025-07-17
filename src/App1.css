@@ -1,8 +1,7 @@
 /* General Reset */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #ffffff;
+font-family: "Consolas", Monaco, monospace;
   color: white;
 }
 
@@ -14,9 +13,9 @@ a {
 .hero {
   position: relative;
   min-height: 100vh;
-  background: #000; /* fallback background */
   overflow: hidden;
   padding-top: 80px;
+  background-color: #021024;
 }
 .fade-in {
   animation: fadeIn 1.2s ease-out forwards;
@@ -32,7 +31,12 @@ a {
   height: 100%;
   object-fit: cover;
   z-index: 0; /* lower than navbar */
-  opacity: 0.4;
+  opacity: 0.65;
+   mask-image: linear-gradient(to bottom, #021024 90%, transparent 90%);
+  -webkit-mask-image: linear-gradient(to bottom, #021024 90%, transparent 100%);
+  
+  /* OPTIONAL: For smoother visual transition */
+  transition: mask-image 0.3s ease-in-out;
 }
 
 .hero .container {
@@ -43,26 +47,25 @@ a {
 /* === SPECIALIZATION SECTION (Updated: Dark Theme, No Outer Container) === */
 .specialization-section-wrapper {
   min-height: 110vh;
-  background: radial-gradient(circle at center, #030332, #10001d);
+  background: linear-gradient(to bottom, #021024, #071739);
   padding: 3rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+
 }
+
 
 .specialization-heading {
   font-size: 2.7rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #AAF6FB;
   font-family: 'Urbanist', sans-serif;
   text-align: center;
   margin-bottom: 1.0 rem;
-  /* Gradient text magic */
-  background: linear-gradient(90deg, #c6b8f5f5, #add6ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  
 }
 
 .main-special-heading {
@@ -171,15 +174,14 @@ a {
 /* Service Section - General (Desktop first, then mobile overrides) */
 .expert-services {
   width: 100%;
-  /* REMOVE fixed height: height: 100vh; */
-  min-height: 100vh; /* Use min-height instead to ensure it's at least 100vh but can grow */
+  min-height: 100vh;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #291f55, #080e31, #0c011f);
+  background: linear-gradient(to bottom,  #071739, #052659);
   display: flex;
   justify-content: center;
-  align-items: center; /* Centers content vertically if it's shorter than min-height */
-  box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
-  overflow: hidden; /* Important: Prevents any child overflow from breaking layout */
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .expert-container {
@@ -189,8 +191,8 @@ a {
   max-width: 1300px;
   width: 100%;
   gap: 3rem;
-  flex-wrap: wrap; /* Allows items to wrap to the next line */
-  align-items: flex-start; /* Align items to the start of the cross axis */
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .expert-left {
@@ -198,34 +200,32 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 280px; /* Adjust if this causes overflow on very small screens */
+  min-width: 280px;
 }
 
 .expert-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: white;
+  color: #AAF6FB;
   margin-bottom: 1rem;
-  line-height: 1.2; /* Improve readability */
+  line-height: 1.2;
 }
 
 .expert-subtitle {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.75);
   max-width: 400px;
-  line-height: 1.5; /* Improve readability */
+  line-height: 1.5;
 }
 
 .expert-grid {
   flex: 2;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns by default */
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
   align-items: center;
-  /* Ensure grid doesn't cause overflow */
-  min-width: 0; /* Allows the grid to shrink beyond min-content */
+  min-width: 0;
 }
-
 .expert-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(15px);
@@ -235,111 +235,109 @@ a {
   align-items: center;
   gap: 0.75rem;
   padding: 0.8rem 1.2rem;
-  height: auto; /* Allow height to adjust to content */
-  min-height: 50px; /* Maintain a minimum height for consistency */
+  height: auto;
+  min-height: 50px;
   transition: 0.3s ease;
   color: white;
   font-size: 1rem;
   font-weight: 500;
   box-shadow: 0 0 0 transparent;
-  word-break: break-word; /* Allow long words to break */
-  overflow: hidden; /* Hide any content that still overflows the card */
+  word-break: break-word;
+  overflow: hidden;
 }
 
 .expert-card:hover {
-  border-color: #8b8dff; /* Neon glow */
-  box-shadow: 0 0 15px #9b9bffae;
+  border-color: #E3C39D;
+  box-shadow: 0 0 15px #ffe5c6;
 }
 
 .service-icon-img {
   height: 32px;
   width: 32px;
   object-fit: contain;
-  flex-shrink: 0; /* Prevent icon from shrinking */
+  flex-shrink: 0;
   margin-right: 12px;
 }
 
 .service-label {
-    flex-grow: 1; /* Allow label to take available space */
-    line-height: 1.2; /* Improve text readability within the card */
+    flex-grow: 1;
+    line-height: 1.2;
 }
-
 /* Mobile Friendly Adjustments (Starting from 768px and down) */
 @media (max-width: 768px) {
   .expert-services {
-    padding: 3rem 1.5rem; /* Slightly reduced padding */
-    min-height: auto; /* Let content dictate height on smaller screens */
-    align-items: flex-start; /* Align content to top */
+    padding: 3rem 1.5rem;
+    min-height: auto;
+    align-items: flex-start;
   }
 
   .expert-container {
-    flex-direction: column; /* Stack vertically */
-    align-items: center; /* Center content horizontally */
-    gap: 2rem; /* Reduce gap between sections */
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
   }
 
   .expert-left {
-    align-items: center; /* Center text within expert-left */
-    text-align: center; /* Center align text */
-    width: 100%; /* Take full width */
-    max-width: 400px; /* Constrain max width for readability */
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
   }
 
   .expert-title {
-    font-size: 2rem; /* Smaller title */
+    font-size: 2rem;
     margin-bottom: 0.8rem;
   }
 
   .expert-subtitle {
-    font-size: 0.9rem; /* Smaller subtitle */
+    font-size: 0.9rem;
   }
 
   .expert-grid {
-    grid-template-columns: 1fr; /* Single column for services */
-    width: 100%; /* Take full width */
-    max-width: 400px; /* Constrain max width of the grid for readability */
-    gap: 1rem; /* Slightly reduced gap between cards */
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 400px;
+    gap: 1rem;
   }
 
   .expert-card {
-    padding: 0.7rem 1rem; /* Slightly smaller padding for cards */
-    font-size: 0.95rem; /* Slightly smaller font for cards */
-    min-height: 45px; /* Maintain minimum height */
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    min-height: 45px;
   }
   .service-icon-img {
     height: 28px;
     width: 28px;
   }
 }
-
 /* Further adjustments for very small screens (e.g., phones in portrait mode) */
 @media (max-width: 576px) {
   .expert-services {
-    padding: 2rem 1rem; /* Even tighter padding */
+    padding: 2rem 1rem; 
   }
 
   .expert-title {
-    font-size: 1.8rem; /* Even smaller title */
+    font-size: 1.8rem; 
   }
 
   .expert-subtitle {
-    font-size: 0.85rem; /* Even smaller subtitle */
+    font-size: 0.85rem;
   }
 
   .expert-grid {
-    max-width: 350px; /* Further constrain grid width */
+    max-width: 350px; 
   }
 
   .expert-card {
-    padding: 0.6rem 0.8rem; /* Even tighter padding for cards */
-    font-size: 0.9rem; /* Even smaller font for cards */
+    padding: 0.6rem 0.8rem; 
+    font-size: 0.9rem;
     min-height: 40px;
   }
 
   .service-icon-img {
     height: 24px;
     width: 24px;
-    margin-right: 8px; /* Reduce margin */
+    margin-right: 8px; 
   }
 }
 /* SECTION BASE */
@@ -351,7 +349,7 @@ a {
 }
 .testimonial-glass-section {
   min-height: 100vh;
-  background: radial-gradient(ellipse at center, #0d0d1f, #000000);
+  background: linear-gradient(to bottom,  #052659,#09182f ); 
   padding: 5rem 2rem;
   position: relative;
 }
@@ -361,7 +359,7 @@ a {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #fff;
+  color: #AAF6FB;
   padding: 2rem 3rem;
   text-align: center;
   font-family: 'Urbanist', sans-serif;
@@ -409,71 +407,63 @@ a {
 /* Call to Action */
 /* --- Your existing .call-to-action styles --- */
 .call-to-action {
-  background: linear-gradient(to bottom, #000000, #0d0d1e);
-  padding: 4rem 2rem; /* Ensure section has some padding */
+  background: linear-gradient(to bottom,#09182f,#021024 ); 
+  padding: 4rem 2rem; 
 }
 
 .call-to-action h2 {
+  color: #AAF6FB;
   margin-bottom: 20px;
   font-weight: 600;
-  /* Add max-width and center for the heading itself to ensure it's not too wide */
-  max-width: 600px; /* Adjust based on your typical heading length */
+  max-width: 600px; 
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
-/* --- NEW CSS for the Button in Call to Action --- */
 .call-to-action .btn {
-  /* Ensure the button is an inline-block element so its width wraps its content */
+  background: #c1e8ff;
   display: inline-block;
-  /* Crucial: Limit the button's width to its content + padding */
-  max-width: fit-content; /* Modern CSS: shrinks to content */
-  /* Fallback for older browsers if needed: */
-  /* width: auto; */
-
-  white-space: nowrap; /* Prevent the button text from wrapping onto multiple lines */
-  margin: 0 auto; /* Center the button if its parent is a block element and you want to center it */
-}
-
+  max-width: fit-content; 
+  white-space: nowrap; 
+  margin: 0 auto;}
 /* --- Media Queries for Mobile Responsiveness --- */
 @media (max-width: 768px) {
   .call-to-action {
-    padding: 3rem 1.5rem; /* Reduce padding on mobile */
+    padding: 3rem 1.5rem;
   }
 
   .call-to-action h2 {
-    font-size: 1.8rem; /* Smaller heading font size */
-    margin-bottom: 15px; /* Adjust margin below heading */
-    line-height: 1.3; /* Improve readability */
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
   }
 
-  .call-to-action .btn-lg { /* Target Bootstrap's large button specifically */
-    padding: 0.75rem 1.5rem; /* Reduce default large button padding */
-    font-size: 0.95rem; /* Smaller font size for the button text */
-    /* Re-affirm display property */
+  .call-to-action .btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
     margin-top: 20px;
     display: inline-block;
-    max-width: fit-content; /* Ensure it wraps content */
+    max-width: fit-content;
   }
 }
 
 @media (max-width: 480px) {
   .call-to-action {
-    padding: 2rem 1rem; /* Even tighter padding for very small screens */
+    padding: 2rem 1rem;
   }
 
   .call-to-action h2 {
-    font-size: 1.5rem; /* Even smaller heading */
+    font-size: 1.5rem;
     margin-bottom: 10px;
   }
 
   .call-to-action .btn-lg {
-    padding: 0.6rem 1.2rem; /* Even smaller padding */
-    font-size: 0.85rem; /* Even smaller font */
+    background: #c1e8ff;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
   }
 }
-
 /* Footer */
 .footer {
   background-color: #120c19;

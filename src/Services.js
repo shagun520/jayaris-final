@@ -8,7 +8,7 @@ import logoImage from './image/logo.png';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import { useLocation } from 'react-router-dom';
-import useMediaQuery from './hooks/useMediaQuery'; // Import the useMediaQuery hook
+import useMediaQuery from './hooks/useMediaQuery';
 
 const servicesData = [
   { title: "Web Development", description: "We build fast, secure, and beautifully designed websites that make you stand out online." },
@@ -48,8 +48,6 @@ const Services = () => {
   const BASE_CARD_WIDTH = isSmallScreen ? 120 : 160;
   // --- END DYNAMIC CAROUSEL PARAMETERS ---
 
-  // Define clonesBefore and clonesAfter here, outside the useMemo for displayItems
-  // This allows them to be accessed by other hooks like logicalIndex and useLayoutEffect
   const CLONE_COUNT = 2; // Number of items to clone at each end for seamless looping
 
   const displayItems = useMemo(() => {
@@ -61,10 +59,9 @@ const Services = () => {
 
   const logicalIndex = useMemo(() => {
     if (servicesData.length === 0) return 0;
-    // Adjust logical index calculation for more clones
-    let index = virtualIndex - CLONE_COUNT; // Subtract the number of leading clones
+    let index = virtualIndex - CLONE_COUNT; 
     return (index + servicesData.length) % servicesData.length;
-  }, [virtualIndex, servicesData.length, CLONE_COUNT]); // Add CLONE_COUNT to dependencies
+  }, [virtualIndex, servicesData.length, CLONE_COUNT]); 
 
 
   const handleSwipe = useCallback((direction) => {

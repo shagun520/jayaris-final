@@ -4,18 +4,22 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif; /* Using Inter font */
-  background-color: #1a1a1a; /* Dark background */
+
   overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Auth Page Wrapper - Full screen background and centering */
 .auth-page-wrapper {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),  url('./image/bg2.jpeg') !important; 
+  background-size: cover  !important; /* This scales the image to cover the entire container (body),
+                             possibly cropping parts of the image if aspect ratios don't match. */
+  background-position: center center  !important; /* Centers the image both horizontally and vertically. */
+  background-attachment: fixed  !important;
   min-height: 100vh; /* Full viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 80px 20px 20px; /* Padding to account for fixed navbar */
-  background: linear-gradient(135deg, #2a0a4c, #0a0a2a, #2a1648); /* Subtle gradient background */
   position: relative;
   overflow: hidden;
 }
@@ -23,14 +27,15 @@ body {
 /* Auth Container - The main glassmorphic box */
 .auth-container {
   display: flex;
-  background: linear-gradient(135deg, #0e0e0eaa, #360d477f); /* Semi-transparent background */
+  background: linear-gradient(135deg, #02102476, #0717395a); /* Semi-transparent background */
   backdrop-filter: blur(15px); /* Glassmorphism blur */
   -webkit-backdrop-filter: blur(15px);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Shadow */
   max-width: 900px; /* Max width for the container on desktop */
-  width: 100%;
+  width: 40%;
+  height: auto;
   overflow: hidden; /* Ensures rounded corners are respected */
   color: #fff;
   position: relative; /* For glow effect positioning */
@@ -38,37 +43,11 @@ body {
   margin-bottom: 30px;
 }
 
-/* Left Panel Styling (Desktop only) */
-.auth-left-panel {
-  flex: 1;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  background: rgba(24, 24, 24, 0.36); /* Slightly darker glass for left panel */
-  border-right: 1px solid rgba(255, 255, 255, 0.05); /* Separator line */
-}
-
-.auth-left-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: #fff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Subtle glow for title */
-}
-
-.auth-left-greeting,
-.auth-left-message {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 5px;
-}
-
 /* Right Panel Styling (Form) */
 .auth-right-panel {
+  width: 30%;
   flex: 1;
-  padding: 40px;
+  padding: 25px;
   display: flex;
   gap: 1.0rem;
   flex-direction: column;
@@ -81,7 +60,7 @@ body {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 30px;
-  color: #fff;
+  color: #AAF6FB;
 }
 
 /* Glass Inputs */
@@ -100,9 +79,6 @@ body {
   overflow: hidden; /* For glow effect */
 }
 
-.glass-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
 
 .glass-input:focus {
   background: rgba(255, 255, 255, 0.15);
@@ -114,10 +90,10 @@ body {
 .glass-button {
   width: 100%;
   padding: 12px 15px;
-  background: linear-gradient(45deg, #6a5acd, #350e59); /* Gradient background */
+  background: #C1E8FF; /* Gradient background */
   border: none;
   border-radius: 10px;
-  color: #fff;
+  color: #000000;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
@@ -125,6 +101,9 @@ body {
   margin-top: 10px;
   position: relative;
   overflow: hidden; /* For glow effect */
+}
+.form-switch-text{
+  color: #447e8f;
 }
 
 .glass-button:hover {
@@ -324,12 +303,12 @@ body {
 
 /* "Create Client Account" button with blue and purple gradient */
 .auth-gradient-button {
-    width: 100%;
+    width: 60%;
     padding: 12px 20px;
-    background: linear-gradient(90deg, #5f5cbd, #91aeff); /* Blue to Purple gradient */
+    background: #C1E8FF; /* Blue to Purple gradient */
     border: none;
     border-radius: 8px;
-    color: white;
+    color: #000000;
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
@@ -352,6 +331,10 @@ body {
     width: 20px;
     height: 20px;
     filter: invert(1); /* Makes the SVG white if its base color is black */
+}
+.switch-link{
+  color: #ddfdff;
+  font-weight: bold;
 }
 
 /* --- Responsive Adjustments --- */

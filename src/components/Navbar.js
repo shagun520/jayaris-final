@@ -38,7 +38,7 @@ function Navbar() {
               className="d-inline-block align-top me-2"
               alt="Jayaris Logo"
             />
-            <span className="fw-bold text-white">Jayaris</span>
+            <span className="jayaris-gradient-text">JAYARIS</span>
           </BootstrapNavbar.Brand>
 
           <BootstrapNavbar.Toggle aria-controls="responsive-navbar-nav" /> {/* Keep this as is */}

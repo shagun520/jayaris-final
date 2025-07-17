@@ -1,18 +1,17 @@
 body {
-  background: linear-gradient(135deg, #17174e, #240d39);
-  background-size: cover;          /* Makes the image cover the entire area */
-  background-repeat: no-repeat;    /* Prevents tiling */
-  background-position: center;     /* Centers the image */
-  background-attachment: fixed;    /* Optional: makes background stay on scroll */
+  background: linear-gradient(to bottom, #021024, #071739, #052659)!important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
 }
-/* Remove margin-bottom from the logo. Rely on gap on parent instead. */
+
 .jayaris-logo-about {
   width: 300px;
   height: auto;
   margin-top: -6.5rem;
-  /* margin-bottom: 15px; /* ❌ REMOVE OR COMMENT OUT THIS LINE */
 }
 
 .aboutus-section {
@@ -20,7 +19,6 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 2rem 4rem;
-  
   color: white;
 }
 
@@ -31,7 +29,7 @@ body {
   justify-content: center;
   font-size: 3rem;
   font-weight: 600;
-  min-height: 200px; /* Ensures space is preserved */
+  min-height: 200px;
   gap: 0.5rem;
 }
 
@@ -46,26 +44,22 @@ body {
   flex: 2;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vertical centering */
-  align-items: center;     /* horizontal centering */
-  gap: 1rem; /* This provides a consistent 16px spacing between elements */
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .jayaris-tagline {
-  /* Add these CSS properties to match Framer Motion's initial state */
-  opacity: 0;             /* Ensures it's invisible from the start */
-  transform: translateY(20px); /* Puts it at the animation's starting Y position */
-  /* This prevents the "flash" at y:0 before animation */
-
+  opacity: 0;
+  transform: translateY(20px);
   font-size: 1.5rem;
   font-weight: 400;
   color: rgb(255, 255, 255);
   text-align: center;
-  /* ❌ REMOVE margin-top: -18px; (if it's still there from previous iterations) */
 }
 .tagline-placeholder {
-  min-height: 30px; /* decrease from 40px */
-  margin-top: -0.9rem; /* optional: tighten space after logo */
+  min-height: 30px;
+  margin-top: -0.9rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,17 +70,14 @@ body {
   font-size: 1.09rem;
   color: rgb(251, 254, 255);
   max-width: 750px;
-  /* Consider adding opacity: 0; transform: translateY(20px); here as well
-     if it also shows a jump before its animation begins */
 }
 .glass-card-placeholder {
-  min-height: 180px; /* tighten space if card isn't very tall */
-  margin-top: -0.8rem; /* optional: reduce space after tagline */
+  min-height: 180px;
+  margin-top: -0.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-/* mission */
 
 .mission-section {
   margin: 5rem auto;
@@ -124,7 +115,6 @@ body {
   text-align: justify;
 }
 
-
 .info-section {
   margin: 5rem auto;
   max-width: 1000px;
@@ -152,8 +142,6 @@ body {
   line-height: 1.8;
   text-align: justify;
 }
-
-/* values */
 
 .values-wrapper {
   display: flex;
@@ -212,272 +200,256 @@ body {
   transform: translateY(-5px);
 }
 
-/* --- Mobile Responsiveness Adjustments (excluding navbar) --- */
-
 @media screen and (max-width: 768px) {
-  /* General / Utility */
   body {
-    padding: 0; /* Remove default body padding if any */
+    padding: 0;
   }
 
-  /* About Section */
   .aboutus-section {
-    flex-direction: column; /* Stack columns vertically */
-    padding: 2rem 1rem; /* Reduce horizontal padding */
-    min-height: auto; /* Allow height to adjust naturally */
+    flex-direction: column;
+    padding: 2rem 1rem;
+    min-height: auto;
   }
 
   .left-stack {
-    font-size: 2rem; /* Reduce font size for smaller screens */
-    text-align: center; /* Center align text */
-    min-height: auto; /* Remove fixed height */
+    font-size: 2rem;
+    text-align: center;
+    min-height: auto;
   }
 
   .right-section {
-    margin-top: 2rem; /* Reduce top margin, adjust as needed */
-    flex: none; /* Remove flex sizing */
-    width: 100%; /* Take full width */
-    padding: 0 1rem; /* Add some padding if needed */
+    margin-top: 2rem;
+    flex: none;
+    width: 100%;
+    padding: 0 1rem;
   }
 
   .jayaris-logo-about {
-    width: 130px; /* Make logo smaller */
-    margin-top:12rem !important; /* Remove any negative top margin that might pull it under the nav */
-    position: relative; /* Ensure it respects flow */
-    z-index: 10; /* Ensure it stays above other content if necessary */
-    /* You might also need to adjust margin-bottom or padding-bottom here if it overlaps with content below */
+    width: 130px;
+    margin-top:12rem !important;
+    position: relative;
+    z-index: 10;
   }
 
   .jayaris-tagline {
-    font-size: 1.2rem; /* Reduce tagline font size */
-    padding: 0 1rem; /* Add some horizontal padding */
+    font-size: 1.2rem;
+    padding: 0 1rem;
   }
 
   .glass-card1 {
-    font-size: 0.95rem; /* Reduce card text font size */
-    max-width: 100%; /* Allow card to take full width with padding */
-    padding: 0 1rem; /* Ensure it respects padding */
+    font-size: 0.95rem;
+    max-width: 100%;
+    padding: 0 1rem;
   }
 
   .tagline-placeholder,
   .glass-card-placeholder {
-    min-height: auto; /* Allow content to dictate height */
-    margin-top: 0.5rem; /* Adjust spacing */
+    min-height: auto;
+    margin-top: 0.5rem;
   }
 
-  /* Mission & Info Sections */
   .mission-section,
   .info-section {
-    margin: 3rem 1rem; /* Reduce top/bottom margin, add horizontal margin */
-    margin-bottom: 2rem ; /* Adjust bottom margin for mission */
-    max-width: calc(100% - 2rem); /* Take full width minus padding */
-    padding: 2rem 1.5rem; /* Reduce padding */
+    margin: 3rem 1rem;
+    margin-bottom: 2rem ;
+    max-width: calc(100% - 2rem);
+    padding: 2rem 1.5rem;
   }
    .info-section {
-    margin: 3rem 1rem; /* Reduce top/bottom margin, add horizontal margin */
-    margin-bottom: -16.7rem !important; /* Adjust bottom margin for mission */
-    max-width: calc(100% - 2rem); /* Take full width minus padding */
-    padding: 2rem 1.5rem; /* Reduce padding */
+    margin: 3rem 1rem;
+    margin-bottom: -16.7rem !important;
+    max-width: calc(100% - 2rem);
+    padding: 2rem 1.5rem;
   }
 
   .mission-heading,
   .info-heading {
-    font-size: 1.8rem; /* Reduce heading font size */
-    text-align: center; /* Center align heading */
-    justify-content: center; /* For flex-wrap to center items */
+    font-size: 1.8rem;
+    text-align: center;
+    justify-content: center;
   }
 
   .mission-para,
   .info-paragraph {
     font-size: 1rem;
-    min-height: 100px; /* Adjust based on typical content height on mobile */
+    min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
   }
 
-  /* Values Section */
   .values-wrapper {
     padding-top: 2rem;
-    flex-direction: column; /* Stack vertically */
-    padding: 1.5rem 0.5rem; /* **REDUCED PADDING** from 2rem 1rem - tighter around the content */
-    max-width: 100%; /* Take full width */
-    margin-left: 0; /* Remove fixed left margin */
+    flex-direction: column;
+    padding: 1.5rem 0.5rem;
+    max-width: 100%;
+    margin-left: 0;
     margin-bottom: -16rem;
   }
 
-  .glass-section { /* This is likely your .values-container */
-    flex-direction: column; /* Stack items vertically */
-    gap: 1rem; /* **REDUCED GAP** between stacked items from 1.5rem */
-    padding: 1.5rem 1rem; /* **REDUCED PADDING** from 2rem 1.5rem - tighter inside the glass section */
-    /* Ensure no min-height or fixed height is causing issues here */
-    min-height: auto; /* Explicitly ensure height is flexible */
+  .glass-section {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+    min-height: auto;
   }
 
   .values-heading {
-    margin-top: 0; /* Important: Remove large top margin from heading */
-    margin-bottom: 1rem; /* **Adjusted for tighter space below heading** - e.g., 1rem */
-    font-size: 2.2rem; /* Slightly reduced heading font size from 2.5rem */
-    text-align: center; /* Center align text */
-    width: 100%; /* Ensure it takes full width for centering */
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    text-align: center;
+    width: 100%;
   }
 
   .values-list {
-    flex: none; /* Remove flex sizing */
-    width: 100%; /* Take full width */
-    display: flex; /* Make it a flex container */
-    flex-direction: column; /* Stack value boxes */
-    gap: 0.8rem; /* **REDUCED GAP** between value boxes from 1rem */
+    flex: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
   }
 
   .value-box {
-    padding: 0.7rem 1rem; /* **REDUCED PADDING** from 0.8rem 1.2rem - tighter internal spacing */
-    font-size: 1rem; /* Reduced font size from 1.1rem */
-    text-align: center; /* Center text within box */
-    margin: 0 auto; /* Center the boxes horizontally */
-    max-width: 250px; /* Limit width for boxes to look good */
-    height: auto; /* Ensure height is not fixed if it causes issues */
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 250px;
+    height: auto;
   }
-}@media screen and (max-width: 480px) {
-  /* Further adjustments for very small screens */
-
+}
+@media screen and (max-width: 480px) {
   .aboutus-section {
-    padding: 1rem 0.5rem; /* Keep relative padding */
-    padding-top: auto; /* Let it adjust based on content and navbar */
-    min-height: auto; /* Ensure no fixed height */
-    height: auto; /* Ensure height adjusts to content */
-    margin: 0; /* Remove any lingering margins */
+    padding: 1rem 0.5rem;
+    padding-top: auto;
+    min-height: auto;
+    height: auto;
+    margin: 0;
   }
 
   .left-stack {
-    font-size: 1.5rem; /* Keep relative font size */
-    gap: 0.3rem; /* Keep small gap */
-    height: auto; /* Ensure height adjusts */
-    width: auto; /* Ensure width adjusts */
-    margin: 0; /* Remove any lingering margins */
+    font-size: 1.5rem;
+    gap: 0.3rem;
+    height: auto;
+    width: auto;
+    margin: 0;
   }
 
   .jayaris-logo-about {
-    width: 80px; /* Even smaller logo for very small screens, adjust as needed */
-    margin: 0 auto 0.5rem auto; /* Center logo, small margin-bottom */
-    height: auto; /* Ensure height adjusts with width */
-    position: static; /* Reset position to normal flow */
-    z-index: auto; /* Reset z-index */
+    width: 80px;
+    margin: 0 auto 0.5rem auto;
+    height: auto;
+    position: static;
+    z-index: auto;
   }
 
   .mission-section,
   .info-section {
-    margin: 3rem 1rem; /* Current top/bottom margin */
+    margin: 3rem 1rem;
     margin-bottom: 5rem;
-    max-width: 100%; /* Take full width, adjusted for padding */
-    padding: 1rem 0.8rem; /* Tighter padding */
-    min-height: auto; /* Ensure no fixed height */
-    height: auto; /* Ensure height adjusts */
-    /* REMOVE margin-bottom: 4rem; -- it's handled by the general margin */
+    max-width: 100%;
+    padding: 1rem 0.8rem;
+    min-height: auto;
+    height: auto;
   }
 
   .mission-heading,
   .info-heading {
-    font-size: 1.4rem; /* Even smaller heading font size */
-    margin-bottom: 0.5rem; /* Small margin below heading */
-    margin-top: 0; /* Ensure no top margin */
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
   }
 
   .mission-para,
   .info-paragraph {
-    font-size: 0.85rem; /* Even smaller paragraph font size */
-    min-height: auto; /* **CRUCIAL: Remove fixed min-height** */
-    height: auto; /* Ensure height adjusts to content */
-    line-height: 1.4; /* Adjust line height for readability */
-    padding: 0; /* Remove padding if parent already has it */
-    margin: 0; /* Remove any lingering margins */
+    font-size: 0.85rem;
+    min-height: auto;
+    height: auto;
+    line-height: 1.4;
+    padding: 0;
+    margin: 0;
   }
 
   .values-wrapper {
-    /* **CRUCIAL: Remove large negative and fixed margins** */
-    margin-top: 21rem !important; /* Change this from negative to a positive value. Adjust as needed. */
-    margin-bottom: 3rem !important; /* Small positive margin before footer */
-    padding: 1rem 0.5rem; /* Tighter padding */
+    margin-top: 21rem !important;
+    margin-bottom: 3rem !important;
+    padding: 1rem 0.5rem;
     max-width: 100%;
-    width: auto; /* Ensure width adjusts */
-    height: auto; /* Ensure height adjusts */
-    min-height: auto; /* Ensure no fixed height */
+    width: auto;
+    height: auto;
+    min-height: auto;
   }
 
   .glass-section {
-    padding: 1rem 0.8rem; /* Tighter padding */
-    gap: 0.8rem; /* Reduced gap */
-    min-height: auto; /* Ensure no fixed height */
-    height: auto; /* Ensure height adjusts */
-  }
-
-  .values-heading {
-    font-size: 1.8rem; /* Adjusted values heading font size */
-    margin-bottom: 0.8rem; /* Small margin below heading */
-    margin-top: 0; /* Ensure no top margin */
-  }
-
-  .values-list {
-    flex: none; /* Remove flex sizing */
-    width: 100%; /* Take full width */
-    display: flex; /* Make it a flex container */
-    flex-direction: column; /* Stack value boxes */
-    gap: 0.5rem; /* Reduced gap between value boxes */
-    margin: 0; /* Remove any lingering margins */
-    padding: 0; /* Remove any lingering paddings */
-  }
-
-  .value-box {
-    padding: 0.5rem 0.8rem; /* Tighter padding */
-    font-size: 0.9rem; /* Even smaller font size */
-    max-width: 100%; /* Allow it to take full width of its container */
-    height: auto; /* Ensure height adjusts to content */
-    margin: 0 auto; /* Keep centering */
-  }
-
-  /* General elements that might cause overflow */
-  img {
-    max-width: 100%; /* Ensure all images are responsive */
+    padding: 1rem 0.8rem;
+    gap: 0.8rem;
+    min-height: auto;
     height: auto;
   }
 
-  /* Ensure no fixed widths on main containers, allow natural flow */
+  .values-heading {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    margin-top: 0;
+  }
+
+  .values-list {
+    flex: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .value-box {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
   .expert-container,
   .expert-grid,
   .expert-left,
   .expert-card {
-      width: auto; /* Let content dictate width */
-      max-width: 100%; /* Ensure it doesn't overflow */
-      min-width: 0; /* Allow shrinking below content size */
-      flex-basis: auto; /* For flex items */
-      margin: 0; /* Remove any lingering margins */
-      padding: 0; /* Remove any lingering paddings */
+      width: auto;
+      max-width: 100%;
+      min-width: 0;
+      flex-basis: auto;
+      margin: 0;
+      padding: 0;
   }
 
-  /* Aggressive Resets for all headings and paragraphs */
   h1, h2, h3, h4, h5, h6, p {
     margin-block-start: 0 !important;
     margin-block-end: 0 !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
-    padding: 0 !important; /* Aggressively remove padding too */
+    padding: 0 !important;
   }
 
-  /* Ensure body and html aren't introducing unexpected margins/paddings */
   body, html {
     margin: 0 !important;
     padding: 0 !important;
-    overflow-x: hidden; /* Crucial for preventing horizontal scroll */
-    width: 100vw; /* Ensure it's exactly viewport width */
+    overflow-x: hidden;
+    width: 100vw;
   }
 
-  /* Footer responsiveness (assuming it's a separate component) */
   .footer {
-    margin-top: 1.5rem; /* Consistent small margin from content above */
+    margin-top: 1.5rem;
     flex-shrink: 0;
     width: 100%;
-    padding: 1.5rem 1rem; /* Adjust internal padding for footer content */
-    box-sizing: border-box; /* Include padding in width/height */
+    padding: 1.5rem 1rem;
+    box-sizing: border-box;
   }
 }

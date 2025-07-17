@@ -6,10 +6,9 @@ body, html {
 
 /* Navbar styles (keep existing desktop styles as they are) */
 .glass-navbar {
-  background-color: rgba(0, 0, 0, 0.7) !important;
+  background-color: #021024d5 !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   position: fixed;
   top: 0;
   width: 100vw;
@@ -29,11 +28,26 @@ body, html {
 .navbar .nav-link:hover {
   color: #606dc5 !important;
 }
-
-.signup-btn {
-  background-color: #272829bd;
-  color: #ffffff !important;
+.jayaris-gradient-text {
+  background: linear-gradient(90deg, 
+    #ec008c,  /* pinkish magenta */
+    #00b4d8,  /* teal blue */
+    #32cd32,  /* lime green */
+    #fcb900,  /* yellow-orange */
+    #ff5722   /* orange red */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; 
+  text-fill-color: transparent;
   font-weight: 600;
+  display: inline-block;
+}
+.signup-btn {
+  background: #c1e8ff;
+  color: #000000 !important;
+  font-weight: 650;
+  font-size: 15px;
   text-transform: lowercase;
   padding: 4px 12px;
   border: none !important;
@@ -51,7 +65,7 @@ body, html {
   gap: 4px;
 }
 .btn-outline-light:hover {
-  background-color: #33396d;
+  background-color: #083881;
   color: #ffffff;
 }
 .navbar-brand img {
@@ -64,6 +78,26 @@ body, html {
 .navbar-brand .fw-bold {
   font-size: 1.5rem;
 }
+.navbar .nav-link.active {
+  position: relative;
+  font-weight: 600;
+  color: #c0c0ff !important;
+  padding-bottom: 4px; /* reduce if too much */
+}
+
+.navbar .nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 8.5px; /* closer to text */
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background-color: #c0d3ff;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+
 
 /* --- Mobile Specific Navbar Styles (Half-Screen Glassmorphic Side Drawer) --- */
 @media (max-width: 991.98px) {
@@ -88,7 +122,7 @@ body, html {
     z-index: 100001 !important; /* Ensure it's on top */
 
     /* Glassmorphic Background (Updated to Navy Blue/Purple related) */
-    background: rgba(20, 20, 20, 0.924) !important; /* Darker navy/purple with transparency */
+    background-color: #021024eb !important; /* Darker navy/purple with transparency */
     backdrop-filter: blur(15px) !important; /* Stronger blur for glass effect */
     -webkit-backdrop-filter: blur(15px) !important;
     border-left: 1px solid rgba(255, 255, 255, 0.1) !important; /* Subtle border on the left edge */
@@ -165,7 +199,6 @@ body, html {
   .signup-btn {
     padding: 0.6rem 1.2rem !important; /* Adjust padding for mobile button */
   }
-
   /* --- Styles for Navbar Toggler (Hamburger / Close Button) --- */
 
   /* Basic styling for the toggler button itself to ensure visibility */
