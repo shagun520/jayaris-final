@@ -1,12 +1,15 @@
 {
   "files": {
-    "main.css": "/jayaris-final/static/css/main.44c98820.css",
-    "main.js": "/jayaris-final/static/js/main.80db585b.js",
+    "main.css": "/jayaris-final/static/css/main.582b3c50.css",
+    "main.js": "/jayaris-final/static/js/main.6c74bda9.js",
+    "static/media/bg2.mp4": "/jayaris-final/static/media/bg2.2b04d36a270a35e4ab1d.mp4",
     "static/media/earthbg.mp4": "/jayaris-final/static/media/earthbg.9cd18799712566afa3be.mp4",
+    "static/media/Earthvideo.mp4": "/jayaris-final/static/media/Earthvideo.217bc138c2eb8d98fc50.mp4",
     "static/media/your-video.mp4": "/jayaris-final/static/media/your-video.6ed8432a3d845192b424.mp4",
     "static/media/image.jpg": "/jayaris-final/static/media/image.bb9f3f1e9e898a80d520.jpg",
     "static/media/Team.jpg": "/jayaris-final/static/media/Team.4194021f90d757d6747a.jpg",
     "static/media/graphic.jpg": "/jayaris-final/static/media/graphic.8ea687706ce5eb73347c.jpg",
+    "static/media/star.png": "/jayaris-final/static/media/star.94256341233f5272eeb5.png",
     "static/media/client2.jpeg": "/jayaris-final/static/media/client2.22bc2bffac0d9ae07700.jpeg",
     "static/media/img1.jpg": "/jayaris-final/static/media/img1.ea9479bb04f5339f7491.jpg",
     "static/media/logo.png": "/jayaris-final/static/media/logo.b70fd411c808c1328089.png",
@@ -14,6 +17,7 @@
     "static/media/img2.webp": "/jayaris-final/static/media/img2.69562e16c9c4b8844ef7.webp",
     "static/media/client3.jpeg": "/jayaris-final/static/media/client3.e854a9c545bfffb1acf4.jpeg",
     "static/media/sai.png": "/jayaris-final/static/media/sai.91dcb60e62daa1dee2e0.png",
+    "static/media/policybg.jpeg": "/jayaris-final/static/media/policybg.f47afc140bc3a8f4b3e4.jpeg",
     "static/media/scontent.png": "/jayaris-final/static/media/scontent.998dec55b959a01edb99.png",
     "static/media/help.png": "/jayaris-final/static/media/help.38f0bd28f5789bdbfe62.png",
     "static/media/sblock.png": "/jayaris-final/static/media/sblock.2e450c5540fb0cb01151.png",
@@ -29,14 +33,17 @@
     "static/media/client1.jpeg": "/jayaris-final/static/media/client1.03eb73ef626f79c870ac.jpeg",
     "static/media/award.png": "/jayaris-final/static/media/award.8889805b329a083c68b9.png",
     "static/media/bg2.jpeg": "/jayaris-final/static/media/bg2.1b67e3614289ae8852ae.jpeg",
+    "static/media/Testibg2.jpeg": "/jayaris-final/static/media/Testibg2.392cad7114e6a7be567e.jpeg",
+    "static/media/backbg.jpeg": "/jayaris-final/static/media/backbg.5a1d6d8962db58be7723.jpeg",
     "static/media/swebd.png": "/jayaris-final/static/media/swebd.55505f9d9b08f033a89d.png",
     "static/media/sappd.png": "/jayaris-final/static/media/sappd.aecaca7b28a973f26681.png",
+    "static/media/Testibg.jpeg": "/jayaris-final/static/media/Testibg.f84b6aff7a9ee4e7ab8f.jpeg",
     "index.html": "/jayaris-final/index.html",
-    "main.44c98820.css.map": "/jayaris-final/static/css/main.44c98820.css.map",
-    "main.80db585b.js.map": "/jayaris-final/static/js/main.80db585b.js.map"
+    "main.582b3c50.css.map": "/jayaris-final/static/css/main.582b3c50.css.map",
+    "main.6c74bda9.js.map": "/jayaris-final/static/js/main.6c74bda9.js.map"
   },
   "entrypoints": [
-    "static/css/main.44c98820.css",
-    "static/js/main.80db585b.js"
+    "static/css/main.582b3c50.css",
+    "static/js/main.6c74bda9.js"
   ]
 }
