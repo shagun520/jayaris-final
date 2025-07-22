@@ -155,7 +155,7 @@ body {
 
   .terms-glass-card h2.section-heading {
     font-size: 1.8rem;
-    margin-top: 1.5rem ; /* Keep good spacing */
+    margin-top: 1.5rem !important ; /* Keep good spacing */
     margin-bottom: 25px; /* already exists */
   }
 
@@ -164,7 +164,6 @@ body {
      margin-bottom: 3px;
      margin-top: 0.4rem ;
   }
-  
 
 }
 
@@ -180,7 +179,7 @@ body {
 
   .terms-glass-card h2.section-heading {
     font-size: 1.6rem;
-    margin-top: 1.5rem ; /* Keep good spacing */
+    margin-top: 1.5rem !important ; /* Keep good spacing */
     margin-bottom: 25px; /* already exists */
   }
 
