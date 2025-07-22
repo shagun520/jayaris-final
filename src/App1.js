@@ -1,6 +1,7 @@
 import AOS from "aos";
 import React from "react";
 import "aos/dist/aos.css";
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import bgVideo from './image/earthbg.mp4';
 import { Typewriter } from 'react-simple-typewriter';
@@ -355,10 +356,15 @@ const cardVariants = {
   </div>
 </motion.section>
 
+{/* Call To Action */}
       <section className="call-to-action text-white py-5">
         <Container className="text-center">
           <h2>Schedule a Free Consultation</h2>
-          <Button variant="light" size="lg" href="/contact" data-aos="zoom-in">Contact Us</Button>
+          <Link to="/contact">
+            <Button variant="light" size="lg" data-aos="zoom-in">
+              Contact Us
+            </Button>
+          </Link>
         </Container>
       </section>
 
@@ -381,9 +387,8 @@ export default function App1() {
       <Route path="/terms" element={<TermsAndConditions />} /> 
       <Route path="/privacy" element={<PrivacyPolicy />} /> 
       <Route path="/cookie-policy" element={<CookiePolicy />} />
-       {/* Add more routes for your footer links that go to separate pages */}
-          <Route path="/blog" element={<p>Blog Page Placeholder</p>} />
-          <Route path="/sitemap" element={<p>Sitemap Page Placeholder</p>} />
+      <Route path="/blog" element={<AboutUs />} />
+      <Route path="/sitemap" element={<Services />} />
     </Routes>
     </>
   );

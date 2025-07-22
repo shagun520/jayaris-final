@@ -84,7 +84,7 @@
 }
 .service-card.center {
   background: linear-gradient(to bottom right, rgba(106, 90, 205, 0.2), rgba(30, 30, 60, 0.4));
-  box-shadow: 0 15px 40px rgba(106, 90, 205, 0.4);
+  box-shadow: 0 15px 40px rgba(163, 148, 255, 0.519);
 }
 
 .service-description {
@@ -161,8 +161,6 @@
     0 0 20px rgba(106, 90, 205, 0.4);
   font-weight: 600;
 }
-
-/* ===== Responsive (Adjust for smaller screens) ===== */
 
 /* Adjustments for screens up to 992px wide (Tablets in landscape, small desktops) */
 @media (max-width: 992px) {
@@ -246,7 +244,7 @@
     height: 250px;
   }
   .service-card h5 {
-    font-size: 1.2rem;
+    font-size: 1.0rem;
   }
   .service-description {
     width: 95%;
@@ -298,9 +296,10 @@
     width: 140px;
     height: 200px;
     padding: 0.7rem;
+
   }
   .service-card h5 {
-    font-size: 1rem;
+    font-size: 0.9rem !important;
   }
   .service-description {
     width: 98%;
@@ -355,7 +354,7 @@
     padding: 0.5rem !important;
   }
   .service-card h5 {
-    font-size: 0.8rem !important;
+    font-size: 0.7rem !important;
   }
   .service-description {
     margin-top: 0.5rem !important;
