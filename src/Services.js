@@ -289,7 +289,7 @@ const getCardTransforms = useCallback((cardIndex) => {
                       tiltMaxAngleX={10}
                       tiltMaxAngleY={10}
                       style={{
-                        backgroundImage: `url(${service.image})`,
+                        backgroundImage: `linear-gradient(to bottom, rgba(46, 2, 86, 0.34), rgba(0, 0, 0, 0.68)), url(${service.image})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
