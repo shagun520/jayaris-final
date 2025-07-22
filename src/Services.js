@@ -1,27 +1,66 @@
-import Tilt from "react-parallax-tilt";
-import "./Services.css";
 import { motion } from "framer-motion";
-import { Container, Nav, Button, Dropdown } from "react-bootstrap";
-import { Link } from 'react-router-dom';
-import React, { useState, useRef, useLayoutEffect, useCallback, useMemo, useEffect } from "react";
-import logoImage from './image/logo.png';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Button } from "react-bootstrap";
+import Tilt from "react-parallax-tilt";
+import { useLocation } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import { useLocation } from 'react-router-dom';
 import useMediaQuery from './hooks/useMediaQuery';
+import "./Services.css";
 
 const servicesData = [
-  { title: "Web Development", description: "We build fast, secure, and beautifully designed websites that make you stand out online." },
-  { title: "App Development", description: "From Android to iOS, we create mobile apps that are smooth, powerful, and user-friendly." },
-  { title: "UI/UX Design", description: "We design interfaces that look stunning and feel effortless to use." },
-  { title: "Cybersecurity Solutions", description: "Your business stays protected with our advanced security setups and monitoring systems." },
-  { title: "SEO & Digital Marketing", description: "We help you rank higher, reach wider, and grow faster with smart marketing strategies." },
-  { title: "AI & Automation", description: "We create intelligent systems that automate tasks and make your business smarter." },
-  { title: "CMS Integration", description: "Easily manage your website with tools like WordPress, Strapi, or custom CMS dashboards." },
-  { title: "Blockchain Development", "description": "We develop secure blockchain apps and smart contracts for the future of digital trust." },
-  { title: "Content Creation", description: "From blogs to brand copy — we write content that connects and converts." },
-  { title: "Business Dashboards", description: "Visual tools that help you track, measure, and manage your company’s performance in real time." },
+  {
+    title: "Web Development",
+    description: "We build fast, secure, and beautifully designed websites that make you stand out online.",
+    image: "/assets/services/webdev.jpeg"
+  },
+  {
+    title: "App Development",
+    description: "From Android to iOS, we create mobile apps that are smooth, powerful, and user-friendly.",
+    image: "/assets/services/appdev.jpeg"
+  },
+  {
+    title: "UI/UX Design",
+    description: "We design interfaces that look stunning and feel effortless to use.",
+    image: "/assets/services/uiux.jpeg"
+  },
+  {
+    title: "Cybersecurity Solutions",
+    description: "Your business stays protected with our advanced security setups and monitoring systems.",
+    image: "/assets/services/cybersol.jpeg"
+  },
+  {
+    title: "SEO & Digital Marketing",
+    description: "We help you rank higher, reach wider, and grow faster with smart marketing strategies.",
+    image: "/assets/services/seomark.jpeg"
+  },
+  {
+    title: "AI & Automation",
+    description: "We create intelligent systems that automate tasks and make your business smarter.",
+    image: "/assets/services/aiaut.jpeg"
+  },
+  {
+    title: "CMS Integration",
+    description: "Easily manage your website with tools like WordPress, Strapi, or custom CMS dashboards.",
+    image: "/assets/services/cmsint.jpeg"
+  },
+  {
+    title: "Blockchain Development",
+    description: "We develop secure blockchain apps and smart contracts for the future of digital trust.",
+    image: "/assets/services/blockchain.jpeg"
+  },
+  {
+    title: "Content Creation",
+    description: "From blogs to brand copy — we write content that connects and converts.",
+    image: "/assets/services/content.jpeg"
+  },
+  {
+    title: "Business Dashboards",
+    description: "Visual tools that help you track, measure, and manage your company’s performance in real time.",
+    image: "/assets/services/busdash.jpeg"
+  }
 ];
+
 
 const Services = () => {
   const location = useLocation();
@@ -98,23 +137,23 @@ const Services = () => {
   const WHEEL_COOLDOWN = 300;
 
   const handleWheel = useCallback((e) => {
-    e.preventDefault();
+  const isHorizontalScroll = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+  if (!isHorizontalScroll) return;
 
-    const now = Date.now();
-    if (now - lastWheelTime.current < WHEEL_COOLDOWN) {
-      return;
-    }
+  e.preventDefault(); // only block when horizontal scroll is detected
 
-    lastWheelTime.current = now;
+  const now = Date.now();
+  if (now - lastWheelTime.current < WHEEL_COOLDOWN) return;
 
-    const scrollDirection = e.deltaX || e.deltaY;
+  lastWheelTime.current = now;
 
-    if (scrollDirection > 0) {
-      handleSwipe("left");
-    } else if (scrollDirection < 0) {
-      handleSwipe("right");
-    }
-  }, [handleSwipe]);
+  if (e.deltaX > 0) {
+    handleSwipe("left");
+  } else {
+    handleSwipe("right");
+  }
+}, [handleSwipe]);
+
 
   useEffect(() => {
     const viewportElement = carouselViewportRef.current;
@@ -128,44 +167,53 @@ const Services = () => {
       }
     };
   }, [handleWheel]);
+const getCardTransforms = useCallback((cardIndex) => {
+  const total = displayItems.length;
+  const rawOffset = cardIndex - virtualIndex;
 
-  const getCardTransforms = useCallback((cardIndex) => {
-    let relativePos = cardIndex - virtualIndex;
-    const totalDisplayItems = displayItems.length;
+  // circular offset: ensures shortest path wraparound
+  const half = Math.floor(total / 2);
+  const offset = ((rawOffset + half) % total) - half;
 
-    const halfTotal = totalDisplayItems / 2;
-    if (relativePos > halfTotal) relativePos -= totalDisplayItems;
-    if (relativePos < -halfTotal) relativePos += totalDisplayItems;
+  const angleStep = MAX_ROTATION_DEGREES / (VISIBLE_SLOTS / 2);
+  const angleDegrees = offset * angleStep;
+  const angleRadians = angleDegrees * (Math.PI / 180);
 
-    const angleStep = MAX_ROTATION_DEGREES / (VISIBLE_SLOTS / 2);
-    const angleDegrees = relativePos * angleStep;
-    const angleRadians = angleDegrees * (Math.PI / 180);
+  const baseTranslateX = ARC_RADIUS * Math.sin(angleRadians);
+  const linearSpreadX = offset * BASE_CARD_WIDTH * 0.8;
+  const translateX = (baseTranslateX + linearSpreadX) * HORIZONTAL_SPACING_FACTOR;
 
-    const baseTranslateX = ARC_RADIUS * Math.sin(angleRadians);
-    const linearSpreadX = relativePos * BASE_CARD_WIDTH * 0.8;
-    const translateX = (baseTranslateX + linearSpreadX) * HORIZONTAL_SPACING_FACTOR;
+  const translateZ = -ARC_RADIUS * Math.cos(angleRadians);
+  const rotateY = angleDegrees;
 
-    const translateZ = -ARC_RADIUS * Math.cos(angleRadians);
-    const rotateY = angleDegrees;
+  const normalizedAbsAngle = Math.min(1, Math.abs(angleDegrees) / (MAX_ROTATION_DEGREES * (VISIBLE_SLOTS / 2)));
+  const scale = MIN_CENTER_SCALE + (MAX_SIDE_SCALE - MIN_CENTER_SCALE) * normalizedAbsAngle;
+  const clampedScale = Math.min(MAX_SIDE_SCALE, Math.max(MIN_CENTER_SCALE, scale));
 
-    const normalizedAbsAngle = Math.min(1, Math.abs(angleDegrees) / (MAX_ROTATION_DEGREES * (VISIBLE_SLOTS / 2)));
-    const scale = MIN_CENTER_SCALE + (MAX_SIDE_SCALE - MIN_CENTER_SCALE) * normalizedAbsAngle;
-    const clampedScale = Math.min(MAX_SIDE_SCALE, Math.max(MIN_CENTER_SCALE, scale));
+  const zIndex = total - Math.abs(offset);
+  const opacityThreshold = (VISIBLE_SLOTS / 2) + 2;
+  const opacity = Math.abs(offset) > opacityThreshold ? 0 : 1;
 
-    const zIndex = totalDisplayItems - Math.abs(relativePos);
-    const opacityThreshold = (VISIBLE_SLOTS / 2) + 2;
-    const opacity = Math.abs(relativePos) > opacityThreshold ? 0 : 1;
-
-    return {
-      x: translateX,
-      y: 0,
-      z: translateZ,
-      rotateY: rotateY,
-      scale: clampedScale,
-      zIndex: zIndex,
-      opacity: opacity
-    };
-  }, [virtualIndex, displayItems.length, ARC_RADIUS, MAX_ROTATION_DEGREES, MIN_CENTER_SCALE, MAX_SIDE_SCALE, VISIBLE_SLOTS, HORIZONTAL_SPACING_FACTOR, BASE_CARD_WIDTH]);
+  return {
+    x: translateX,
+    y: 0,
+    z: translateZ,
+    rotateY: rotateY,
+    scale: clampedScale,
+    zIndex: zIndex,
+    opacity: opacity
+  };
+}, [
+  virtualIndex,
+  displayItems.length,
+  ARC_RADIUS,
+  MAX_ROTATION_DEGREES,
+  MIN_CENTER_SCALE,
+  MAX_SIDE_SCALE,
+  VISIBLE_SLOTS,
+  HORIZONTAL_SPACING_FACTOR,
+  BASE_CARD_WIDTH
+]);
 
   useLayoutEffect(() => {
     if (isAnimatingRef.current) return;
@@ -199,6 +247,7 @@ const Services = () => {
     }
   }, [virtualIndex, displayItems.length, servicesData.length, CLONE_COUNT]);
 
+  
 
   return (
     <>
@@ -232,16 +281,25 @@ const Services = () => {
                       zIndex: transforms.zIndex,
                       opacity: transforms.opacity
                     }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
                     onClick={() => setVirtualIndex(index)}
                   >
                     <Tilt
                       className={`service-card ${isCenter ? 'center' : ''}`}
                       tiltMaxAngleX={10}
                       tiltMaxAngleY={10}
+                      style={{
+                        backgroundImage: `url(${service.image})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                      }}
                     >
-                      <h5>{service.title}</h5>
+                      <div className="card-heading-blur">
+                        <h5>{service.title}</h5>
+                      </div>
                     </Tilt>
+
                   </motion.div>
                 );
               })}

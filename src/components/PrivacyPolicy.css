@@ -134,11 +134,10 @@ body {
   color: #c0a8e0; /* Lighter purple on hover */
   text-decoration: underline;
 }
-
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   .policy-glass-card {
-    padding: 30px 20px; /* Reduce padding on smaller screens */
+    padding: 30px 20px;
     margin: 15px;
   }
 
@@ -148,11 +147,19 @@ body {
 
   .policy-glass-card h2.section-heading {
     font-size: 1.8rem;
-    margin-top: 40px; /* Keep good spacing */
+    margin-top: 1.5rem; /* Clear space above */
+    margin-bottom: 25px;
   }
 
   .policy-glass-card h3 {
     font-size: 1.2rem;
+    margin-top: 0.8rem;
+    margin-bottom: 6px;
+  }
+
+  .policy-glass-card h2.section-heading + p,
+  .policy-glass-card h3 + p {
+    margin-top: 12px;
   }
 }
 
@@ -168,11 +175,19 @@ body {
 
   .policy-glass-card h2.section-heading {
     font-size: 1.6rem;
-    margin-top: 30px;
+    margin-top: 1.5rem; /* More breathing space */
+    margin-bottom: 25px;
   }
 
   .policy-glass-card h3 {
     font-size: 1.1rem;
+    margin-top: 0.8rem;
+    margin-bottom: 6px;
+  }
+
+  .policy-glass-card h2.section-heading + p,
+  .policy-glass-card h3 + p {
+    margin-top: 14px;
   }
 
   .policy-glass-card .effective-dates {

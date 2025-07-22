@@ -114,6 +114,10 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
+.carousel-track {
+  transition: transform 0.4s ease-in-out; /* <== slow down rotation/slide */
+}
+
 .carousel-nav-arrows {
   margin-top: 15px; /* This will be overridden for mobile */
   display: flex;
@@ -135,6 +139,30 @@
   background-color: rgba(255, 255, 255, 0.25);
   border-color: rgba(255, 255, 255, 0.4);
 }
+
+.service-card .card-heading-blur {
+  width: 100%;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.145);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.service-card .card-heading-blur h5 {
+  font-size: 1.6rem;
+  color: #fff;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.3),
+    0 0 10px rgba(106, 90, 205, 0.5),
+    0 0 20px rgba(106, 90, 205, 0.4);
+  font-weight: 600;
+}
+
 /* ===== Responsive (Adjust for smaller screens) ===== */
 
 /* Adjustments for screens up to 992px wide (Tablets in landscape, small desktops) */

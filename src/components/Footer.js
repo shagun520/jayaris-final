@@ -95,9 +95,9 @@ const Footer = () => {
           <Col md={3} className="mb-4 mb-md-0">
             <h5 className="footer-heading">Contact Info</h5>
             <ul className="list-unstyled footer-contact-info">
-              <li>Email: <a href="mailto:support@jayaris.com">support@jayaris.com</a></li>
-              <li>Location: India</li>
-              <li>Phone: +123 456 7890</li>
+              <li>Email: <a href="mailto:support@jayaris.com">infojayaris@outlook.com</a></li>
+              <li>Location: 📍 314/16 Nanda Nagar, Indore – 452011, Madhya Pradesh, India</li>
+              <li>Phone: +91-9981442233 / +91-8516998877</li>
             </ul>
           </Col>
 
@@ -129,7 +129,7 @@ const Footer = () => {
         <Row>
           <Col className="text-center">
             <p className="footer-copyright">
-              Copyright &copy; {currentYear} JAYARIS All Rights Reserved
+              Copyright &copy; {currentYear} JAYARIS Solution Private Limited
             </p>
           </Col>
         </Row>

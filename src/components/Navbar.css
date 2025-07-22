@@ -116,7 +116,7 @@ body, html {
     right: 0 !important; /* Position from the right side */
     width: 65vw !important; /* Take up 65% of viewport width */
     max-width: 300px !important; /* Max width for larger phones/small tablets */
-    height: 100vh !important; /* Full viewport height */
+    height: 70vh !important; /* Full viewport height */
     overflow-y: auto !important; /* Allow scrolling if content is long */
     overflow-x: hidden !important; /* Prevent horizontal scroll within the drawer */
     z-index: 100001 !important; /* Ensure it's on top */
@@ -127,7 +127,7 @@ body, html {
     -webkit-backdrop-filter: blur(15px) !important;
     border-left: 1px solid rgba(255, 255, 255, 0.1) !important; /* Subtle border on the left edge */
     box-shadow: -8px 0 30px rgba(0, 0, 0, 0.4) !important; /* Shadow for depth */
-
+    border-radius: 10px;
     /* Flexbox for stacking and aligning menu items */
     display: flex !important;
     flex-direction: column !important;
@@ -245,6 +245,25 @@ body, html {
     height: 2px; /* Thickness of the lines */
     background-color: white !important;
     transition: transform 0.3s ease-in-out; /* Smooth transition for the rotation */
+  }
+  .glass-navbar .dropdown-menu {
+    position: absolute !important;
+    left: 0 !important; /* Align to the left of the button */
+    right: auto !important;
+    transform: none !important;
+    width: 100% !important; /* Take full width of drawer */
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .glass-navbar .dropdown-menu .dropdown-item {
+    color: #000 !important;
+    padding: 0.75rem 1rem;
+  }
+
+  .glass-navbar .dropdown-menu .dropdown-item:hover {
+    background-color: #f0f0f0;
   }
   
 }

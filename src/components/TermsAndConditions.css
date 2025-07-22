@@ -155,12 +155,17 @@ body {
 
   .terms-glass-card h2.section-heading {
     font-size: 1.8rem;
-    margin-top: 40px; /* Keep good spacing */
+    margin-top: 1.5rem ; /* Keep good spacing */
+    margin-bottom: 25px; /* already exists */
   }
 
   .terms-glass-card h3 {
     font-size: 1.2rem;
+     margin-bottom: 3px;
+     margin-top: 0.4rem ;
   }
+  
+
 }
 
 @media (max-width: 480px) {
@@ -175,14 +180,24 @@ body {
 
   .terms-glass-card h2.section-heading {
     font-size: 1.6rem;
-    margin-top: 30px;
+    margin-top: 1.5rem ; /* Keep good spacing */
+    margin-bottom: 25px; /* already exists */
   }
 
   .terms-glass-card h3 {
     font-size: 1.1rem;
+     margin-bottom: 3px;
+     margin-top: 0.4rem ;
   }
+  
 
   .terms-glass-card .effective-dates {
     font-size: 0.85rem;
   }
+  
+  .terms-glass-card h2.section-heading + p,
+.terms-glass-card h3 + p {
+  margin-top: 719px;
+}
+
 }

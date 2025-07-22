@@ -1,7 +1,7 @@
 /* src/components/Footer.css */
 
 .main-footer {
-  background-color: #0d0d1e;
+  background-color: #021024;
   color: #f8f9fa;
   font-size: 0.95rem;
 }
@@ -54,7 +54,6 @@
 .footer-copyright {
   color: #e0e0e0;
   font-size: 0.85rem;
-  margin-top: 1rem;
   margin-bottom: 0;
 }
 

@@ -7,7 +7,9 @@ body {
 
   overflow-x: hidden; /* Prevent horizontal scroll */
 }
-
+.pointer-cursor {
+    cursor: pointer;
+}
 /* Auth Page Wrapper - Full screen background and centering */
 .auth-page-wrapper {
     background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),  url('./image/bg2.jpeg') !important; 
@@ -42,7 +44,11 @@ body {
   z-index: 1; /* Ensure it's above any background elements */
   margin-bottom: 30px;
 }
-
+.switch-link {
+  color: #ddfdff;
+  font-weight: bold;
+  cursor: pointer; /* 👈 add this line */
+}
 /* Right Panel Styling (Form) */
 .auth-right-panel {
   width: 30%;
@@ -367,4 +373,64 @@ body {
     .form-title {
         font-size: 1.8rem;
     }
+}
+
+/* Additional responsive refinements for screens ≤ 480px */
+@media (max-width: 480px) {
+  .auth-page-wrapper {
+    padding: 60px 10px 10px; /* Slightly reduce padding */
+  }
+
+  .auth-container {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 0 10px;
+  }
+
+  .auth-right-panel {
+    padding: 20px 15px;
+    gap: 0.8rem;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .glass-input-auth,
+  .glass-input,
+  .glass-button,
+  .google-login-button,
+  .auth-gradient-button {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .terms-checkbox {
+    font-size: 0.85rem;
+  }
+
+  .google-login-separator {
+    font-size: 0.85rem;
+    margin: 15px 0;
+  }
+
+  .glass-input-auth::placeholder,
+  .glass-input::placeholder {
+    font-size: 0.85rem;
+  }
+
+  .form-switch-text {
+    font-size: 0.9rem;
+  }
+
+  .switch-link {
+    font-size: 0.95rem;
+  }
 }

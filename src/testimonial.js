@@ -60,20 +60,67 @@ const Testimonial = () => {
 
     <motion.section className="testimonial-glass-section" id="testimonials">
       {/* Central Glass Message Box */}
-      <motion.div
+      {/* <motion.div
         className="glass-message-box"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.2 }}
       >
         <Typewriter
-          words={["we hear clients are saying something about us..."]}
+          words={["We hear clients are saying something about us..."]}
           loop={1}
           cursor
           typeSpeed={50}
           deleteSpeed={30}
         />
-      </motion.div>
+      </motion.div> */}
+
+<div
+  style={{
+    // backgroundImage: 'url("/Testibg.jpeg")',
+    // backgroundPosition: 'center',
+    // backgroundRepeat: 'no-repeat',
+    // backgroundSize: 'cover',
+  }}
+  className="quality-section"
+>
+  <div className="quality-wrapper">
+    <div className="quality-top">
+      <h1 className="quality-heading">We Provide Best Quality</h1>
+      <button className="quality-button">
+        <a
+          href="https://riyakaushal321.wixstudio.com/my-site-10"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View
+        </a>
+      </button>
+    </div>
+    <div className="quality-down">
+      {[
+        "https://static.wixstatic.com/media/0bb83114d47e4ca0a9fa5a9ea6a16530.jpg/v1/fill/w_414,h_527,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Mountain%20Landscape.jpg",
+        "https://static.wixstatic.com/media/11062b_2acbd6eaea3d43b98b40d28b8838464e~mv2.jpg/v1/fill/w_414,h_527,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Mountain.jpg",
+        "https://static.wixstatic.com/media/11062b_4c10b593035143bda767c755c09bb406~mv2.jpg/v1/fill/w_414,h_527,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Mountain.jpg",
+        
+      ].map((img, i) => (
+        <div className="quality-box" key={i}>
+          <a
+            href="https://riyakaushal321.wixstudio.com/my-site-10"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={img} alt={`Bali ${i}`} />
+          </a>
+          <h1 className="quality-location">
+            Bali, Indonesia <br />
+            <span>$300</span>
+          </h1>
+        </div>
+      ))}
+    </div>
+  </div>
+  </div>
 
       {/* Cards fade in one by one */}
       <div className="client-feedback-grid">

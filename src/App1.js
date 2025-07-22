@@ -18,7 +18,6 @@ import ScrollToTop from './ScrollToTop';
 import useMediaQuery from './hooks/useMediaQuery';
 import { Container, Button,Row,Col} from "react-bootstrap";
 import "./App1.css";
-
 import client1 from './image/client1.jpeg';
 import client2 from './image/client2.jpeg';
 import client3 from './image/client3.jpeg';
@@ -125,6 +124,26 @@ const serviceData = [
      icon: require('./image/award.png')
   },
 ];
+
+// Animation Variants
+const gridVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      delayChildren: 1.2,     // starts after subheading appears
+      staggerChildren: 0.2,   // each card comes one after the other
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
 
   return (
     <>
@@ -250,68 +269,67 @@ const serviceData = [
     </motion.div>
 
     {/* Service Grid */}
-    <motion.div
-      className="expert-grid"
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 1.0, duration: 0.6 }}
-    >
-      {[
-  { name: 'Web Development', img: 'swebd.png' },
-  { name: 'App Development', img: 'sappd.png' },
-  { name: 'UI/UX Design', img: 'suiux.png' },
-  { name: 'Cybersecurity Solutions', img: 'scyber.png' },
-  { name: 'SEO & Digital Marketing', img: 'sseo.png' },
-  { name: 'AI & Automation', img: 'sai.png' },
-  { name: 'CMS Integration', img: 'scms.png' },
-  { name: 'Blockchain Development', img: 'sblock.png' },
-  { name: 'Content Creation', img: 'scontent.png' },
-  { name: 'Business Dashboards', img: 'sdashboard.png' }
-].map((service, index) => (
-  <Tilt
-    key={index}
-    glareEnable={true}
-    glareMaxOpacity={0.2}
-    scale={1.03}
-    transitionSpeed={250}
-    tiltMaxAngleX={8}
-    tiltMaxAngleY={8}
-    className="tilt-wrapper"
-  >
-    <div className="expert-card">
-      <img
-        src={require(`./image/${service.img}`)}
-        alt={service.name}
-        className="service-icon-img"
-      />
-      <span className="service-label">{service.name}</span>
-    </div>
-  </Tilt>
-))}
-
+<motion.div
+  className="expert-grid"
+  variants={gridVariants}
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: true, amount: 0.3 }}
+>
+  {[
+    { name: 'Web Development', img: 'swebd.png' },
+    { name: 'App Development', img: 'sappd.png' },
+    { name: 'UI/UX Design', img: 'suiux.png' },
+    { name: 'Cybersecurity Solutions', img: 'scyber.png' },
+    { name: 'SEO & Digital Marketing', img: 'sseo.png' },
+    { name: 'AI & Automation', img: 'sai.png' },
+    { name: 'CMS Integration', img: 'scms.png' },
+    { name: 'Blockchain Development', img: 'sblock.png' },
+    { name: 'Content Creation', img: 'scontent.png' },
+    { name: 'Business Dashboards', img: 'sdashboard.png' }
+  ].map((service, index) => (
+    <motion.div key={index} variants={cardVariants}>
+      <Tilt
+        glareEnable={true}
+        glareMaxOpacity={0.2}
+        scale={1.03}
+        transitionSpeed={250}
+        tiltMaxAngleX={8}
+        tiltMaxAngleY={8}
+        className="tilt-wrapper"
+      >
+        <div className="expert-card">
+          <img
+            src={require(`./image/${service.img}`)}
+            alt={service.name}
+            className="service-icon-img"
+          />
+          <span className="service-label">{service.name}</span>
+        </div>
+      </Tilt>
     </motion.div>
+  ))}
+</motion.div>
+
   </div>
 </section>
-
 
 
 {/* Testimonial Section */}
 <motion.section className="testimonial-glass-section" id="testimonials">
   {/* Central Glass Message Box */}
-  <motion.div
-    className="glass-message-box"
-    initial={{ opacity: 0, scale: 0.95 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 1, delay: 0.2 }}
-  >
-    <Typewriter
-      words={["We hear clients are saying something about us..."]}
-      loop={1}
-      typeSpeed={50}
-      deleteSpeed={30}
-    />
-  </motion.div>
+<motion.div
+  className="glass-message-box"
+  initial={{ opacity: 0, scale: 0.9 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  viewport={{ amount: 0.4, once: true }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+>
+  <div className="glass-heading">
+  Our clients speak for us
+</div>
+</motion.div>
+
 
   {/* Cards fade in one by one */}
   <div className="client-feedback-grid">
@@ -336,7 +354,6 @@ const serviceData = [
     ))}
   </div>
 </motion.section>
-
 
       <section className="call-to-action text-white py-5">
         <Container className="text-center">
