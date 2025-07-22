@@ -200,7 +200,7 @@ body {
   .policy-glass-card h2.section-heading {
     font-size: 1.8rem;
     margin-top: 1.5rem !important; /* Space above section */
-    margin-bottom: 25px;
+    margin-bottom: 15px !important;
   }
 
   .policy-glass-card h3 {
@@ -228,7 +228,7 @@ body {
   .policy-glass-card h2.section-heading {
     font-size: 1.6rem;
     margin-top: 1.5rem; /* Space above section */
-    margin-bottom: 25px;
+    margin-bottom: 15px !important;
   }
 
   .policy-glass-card h3 {

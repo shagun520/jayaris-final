@@ -180,7 +180,7 @@ body {
   .terms-glass-card h2.section-heading {
     font-size: 1.6rem;
     margin-top: 1.5rem !important ; /* Keep good spacing */
-    margin-bottom: 25px; /* already exists */
+    margin-bottom: 15px !important; /* already exists */
   }
 
   .terms-glass-card h3 {
@@ -194,9 +194,5 @@ body {
     font-size: 0.85rem;
   }
   
-  .terms-glass-card h2.section-heading + p,
-.terms-glass-card h3 + p {
-  margin-top: 719px;
-}
 
 }
