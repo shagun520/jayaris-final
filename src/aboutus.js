@@ -1,253 +1,246 @@
-import React from "react";
-import "./aboutus.css"; // if you’re using a CSS file
-import { motion } from "framer-motion";
-import { Container, Nav, Button, Dropdown } from "react-bootstrap";
-import Navbar from './components/Navbar';
-import { useEffect, useState } from "react";
-import { Typewriter } from "react-simple-typewriter"; // This is not used in the provided code, but keeping it
-import Tilt from "react-parallax-tilt";
-import logoImage from './image/logo.png';
+import React from 'react';
+import './aboutus.css';
+import { motion } from 'framer-motion';
 import Footer from './components/Footer';
-import { useLocation } from 'react-router-dom';
-import useMediaQuery from './hooks/useMediaQuery';
+import Navbar from './components/Navbar';
+import missionImage from "./image/mission.jpeg";
+import visionImage from "./image/vision.jpeg";
 
+const headingText = "Jayaris is where bold ideas meet seamless execution.";
+const description = `Empowering the Digital Future — One Solution at a Time.
+Jayaris is where bold ideas meet seamless execution. We are a new-age IT solutions company helping businesses grow, scale, and innovate with cutting-edge digital services.
+From startups to enterprises, we help brands transform with technology — building high-performing digital products that solve real-world problems.`;
 
-const AboutUs = () => {
-  const location = useLocation();
-  const isSmallScreen = useMediaQuery('(max-width: 991.98px)');
+const About = () => {
+  const jayaris = "Jayaris";
+  const restHeading = headingText.replace("Jayaris", "").trim();
 
-   useEffect(() => {
-    if (location.state?.fromFooter && !location.hash) {
-      window.scrollTo(0, 0);
-    }
-  }, [location]);
-
-  const [showCode, setShowCode] = useState(false); // Not used in provided code
-  const [showDeploy, setShowDeploy] = useState(false); // Not used in provided code
-  const [showPara, setShowPara] = useState(false); // Not used in provided code
-
-  const [showCard, setShowCard] = useState(false);
-
-  useEffect(() => {
-    const cardTimer = setTimeout(() => setShowCard(true), 1200);
-    return () => {
-      clearTimeout(cardTimer);
-    };
-  }, []);
-
-   const animationDelays = {
-    
-    missionWrapper: isSmallScreen ? 2.2 : 3.0, // Start mission section significantly later on mobile (e.g., 2.2s after page load)
-    missionHeading: isSmallScreen ? 0.7 : 3.5, // Base delay for heading after wrapper appears
-    missionHeadingWordStagger: isSmallScreen ? 0.15 : 0.05, // Increased stagger for individual words
-    missionPara: isSmallScreen ? 1.2 : 0.3, // Ensure para comes after heading and heading words are done
-
-    visionSection: isSmallScreen ? 1.0 : 0.1, // Start vision section later on mobile (e.g., 4.0s after page load)
-    visionHeading: isSmallScreen ? 0.7 : 0.4,
-    visionHeadingWordStagger: isSmallScreen ? 0.15 : 0.05,
-    visionPara: isSmallScreen ? 1.2 : 0.3,
-
-    valuesContainer: isSmallScreen ? 2.3 : 0.1, // Start values section later on mobile (e.g., 5.8s after page load)
-    valuesHeading: isSmallScreen ? 0.7 : 0.3,
-    valuesBoxStagger: isSmallScreen ? 0.2 : 0.06, // Slightly more stagger for boxes
-};
+  
+const missionPoints = [
+  "Bridge global gaps through tech",
+  "Deliver scalable digital solutions",
+  "Unlock client growth worldwide",
+  "Leverage India’s top tech talent",
+];
 
   return (
-      <>
-      <Navbar/>
-    
-  {/* first viewport */}
-  <div className="aboutus-section">
-  <div className="right-section">
-    <div className="tagline-placeholder">
-      <motion.p
-        className="jayaris-tagline"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-        layout
-      >
-        Jayaris is where bold ideas meet seamless execution.
-      </motion.p>
-    </div>
+    <>
+      <Navbar />
+      <section className="about-hero">
+        <div className="overlay">
+          <div className="text-box">
+            <motion.h1 className="hero-heading">
+              <motion.span
+                className="word jayaris-highlight"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                {jayaris}
+              </motion.span>
 
-    {/* Glass card wrapper with reserved height */}
-    <div className="glass-card-placeholder">
-      {showCard && (
-        <motion.div
-          className="glass-card1"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.9 }} // Original delay
-          layout
-        >
-          <h3>Empowering the Digital Future — One Solution at a Time</h3>
-          <p>
-            Jayaris is where bold ideas meet seamless execution. We are a new-age IT solutions company helping businesses grow, scale, and innovate with cutting-edge digital services.
-            <br />
-            From startups to enterprises, we help brands transform with technology — building high-performing digital products that solve real-world problems.
-          </p>
-        </motion.div>
-      )}
-    </div>
-  </div>
-</div>
+              <motion.span
+                className="word"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+              >
+                &nbsp;{restHeading}
+              </motion.span>
+            </motion.h1>
 
+            <motion.p
+              className="hero-description"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.6, duration: 0.6 }}
+            >
+              {description}
+            </motion.p>
+          </div>
+        </div>
+      </section>
 
-{/* mission */}
-<motion.div
-  className="mission-wrapper"
-  initial={{ opacity: 0, x: -100 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  // **** CHANGE THIS LINE ****
-  transition={{ duration: 1, ease: "easeOut", delay: animationDelays.missionWrapper }}
-  viewport={{ once: true, amount: 0.5 }} // Keep amount for general visibility
->
-  <section className="mission-section" id="mission">
-    <motion.h2
-      className="mission-heading"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      // **** CHANGE THIS LINE ****
-      transition={{ duration: 1.5, delay: animationDelays.missionHeading }}
-      viewport={{ once: true }} // No amount needed here, parent controls initial view
-    >
-      {"Our Mission".split(" ").map((word, idx) => (
-        <motion.span
-          key={idx}
-          className="word-span"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }} // Changed to whileInView
-          // **** CHANGE THIS LINE ****
-          transition={{ delay: animationDelays.missionHeadingWordStagger + idx * animationDelays.missionHeadingWordStagger }}
-          viewport={{ once: true }}
-        >
-          {word}&nbsp;
-        </motion.span>
-      ))}
-    </motion.h2>
-
-    <motion.p
-      className="mission-para"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      // **** CHANGE THIS LINE ****
-      transition={{ duration: 1.2, ease: "easeOut", delay: animationDelays.missionPara }}
-      viewport={{ once: true, amount: 0.5 }} // Ensure paragraph comes into view later
-    >
-      At Jayaris, our mission is to bridge global gaps through technology by delivering
-      future-ready digital solutions that blend creativity, functionality, and impact. We aim
-      to elevate brands, streamline operations, and unlock growth for clients across borders
-      by leveraging India’s top tech talent and global best practices. To bridge borders
-      through technology by delivering reliable, scalable, and innovative IT solutions to
-      clients worldwide.
-    </motion.p>
-  </section>
-</motion.div>
-
-
-{/* Vision Section */}
-<motion.section
-  className="info-section"
-  initial={{ opacity: 0, x: 120 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  // **** CHANGE THIS LINE ****
-  transition={{ duration: 1.2, ease: "easeOut", delay: animationDelays.visionSection }}
-  viewport={{ once: true, amount: 0.5 }} // triggers when ~40% in view
->
-  <motion.h2
-    className="info-heading"
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }} // Changed to whileInView
-    // **** CHANGE THIS LINE ****
-    transition={{ duration: 0.6, delay: animationDelays.visionHeading }}
-    viewport={{ once: true }}
-  >
-    {"Our Vision".split(" ").map((word, idx) => (
-      <motion.span
-        key={idx}
-        className="word-span"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }} // Changed to whileInView
-        // **** CHANGE THIS LINE ****
-        transition={{ delay: animationDelays.visionHeadingWordStagger + idx * animationDelays.visionHeadingWordStagger }}
-        viewport={{ once: true }}
-      >
-        {word}&nbsp;
-      </motion.span>
-    ))}
-  </motion.h2>
-
-  <motion.p
-    className="info-paragraph"
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    // **** CHANGE THIS LINE ****
-    transition={{ duration: 1, delay: animationDelays.visionPara }}
-    viewport={{ once: true, amount: 0.5 }} // Ensure paragraph comes into view later
-  >
-    At Jayaris, we envision becoming the most trusted global partner in
-    digital transformation — a name synonymous with innovation,
-    reliability, and client success. Our goal is to empower businesses
-    and institutions around the world by delivering cutting-edge IT
-    solutions that are not only scalable and efficient but also
-    tailored to real-world challenges.
-    <br /><br />
-    As we strive to lead the way in tech excellence, we remain deeply
-    committed to helping our clients achieve long-term growth and
-    competitive advantage through the intelligent use of technology.
-    In this pursuit, trust is our foundation, excellence is our
-    benchmark, and innovation is the path we follow.
-  </motion.p>
-</motion.section>
-
-{/* Values Section */}
-<section className="values-wrapper" id="values">
+      {/* Our Mission Section */}
+{/* Our Mission Section */}
+<section className="our-mission-section" id="our-mission">
   <motion.div
-    className="values-container glass-section"
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    whileHover={{ rotateX: 5, rotateY: -5 }}
-    // **** CHANGE THIS LINE ****
-    transition={{ duration: 1, ease: "easeOut", delay: animationDelays.valuesContainer }}
-    viewport={{ once: true, amount: 0.5 }}
+    className="our-mission-container"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.3 }}
+    variants={{
+      hidden: {},
+      visible: {
+        transition: {
+          staggerChildren: 0.3,
+        },
+      },
+    }}
   >
-    <motion.h2
-      className="values-heading"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      // **** CHANGE THIS LINE ****
-      transition={{ duration: 1.2, delay: animationDelays.valuesHeading }}
-      viewport={{ once: true }}
+    <motion.div
+      className="mission-image"
+      variants={{
+        hidden: { opacity: 0, x: 100 },
+        visible: { opacity: 1, x: 0, transition: { duration: 1 } },
+      }}
     >
-      OUR VALUES
-    </motion.h2>
+      <img src={missionImage} alt="Mission Visual" />
+    </motion.div>
 
-    <div className="values-list">
-  {["Innovation", "Excellence", "Agility", "Transparency", "Global Thinking"].map(
-    (value, index) => (
-      <Tilt glareEnable={true} glareMaxOpacity={0.2} scale={1.02} transitionSpeed={1500}>
-        <motion.div
-          key={index}
-          className="value-box"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          // **** CHANGE THIS LINE ****
-          transition={{ duration: 0.5, delay: animationDelays.valuesBoxStagger + index * animationDelays.valuesBoxStagger }}
-          viewport={{ once: true }}
-        >
-          {value}
-        </motion.div>
-      </Tilt>
-    )
-  )}
-</div>
+    <motion.div
+      className="mission-content"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
+    >
+      <motion.h2
+        className="mission-heading"
+        variants={{
+          hidden: { opacity: 0, y: 30 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+        }}
+      >
+        Our Mission
+      </motion.h2>
+
+      <motion.p
+        className="mission-paragraph"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { duration: 1 } },
+        }}
+      >
+        At Jayaris, our mission is to bridge global gaps through technology by delivering future-ready digital solutions that blend creativity, functionality, and impact. We aim to elevate brands, streamline operations, and unlock growth for clients across borders by leveraging India’s top tech talent and global best practices.
+      </motion.p>
+
+      <motion.ul
+        className="mission-points"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { duration: 1 } },
+        }}
+      >
+        <li>🌐 Bridging global gaps through tech</li>
+        <li>🚀 Delivering future-ready digital solutions</li>
+        <li>🎯 Elevating brands and streamlining operations</li>
+        <li>💡 Leveraging India’s top tech talent</li>
+      </motion.ul>
+    </motion.div>
   </motion.div>
 </section>
 
-<Footer />
-</>
+<section className="our-vision-section">
+  <div className="our-vision-container">
+    {/* Image */}
+    <motion.div
+      className="vision-image"
+      initial={{ opacity: 0, x: -100 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+      <img src={visionImage} alt="Vision" />
+    </motion.div>
+
+    {/* Content */}
+    <div className="vision-content">
+      {/* Heading */}
+      <motion.h2
+        className="vision-heading"
+        initial={{ opacity: 0, y: -40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        Our Vision
+      </motion.h2>
+
+      {/* Paragraph */}
+      <motion.p
+        className="vision-paragraph"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        viewport={{ once: true }}
+      >
+        At Jayaris, we envision becoming the most trusted global partner in digital transformation — a name synonymous with innovation, reliability, and client success. Our goal is to empower businesses and institutions around the world by delivering cutting-edge IT solutions that are not only scalable and efficient but also tailored to real-world challenges.
+        <br></br>
+        <br></br>
+        As we strive to lead the way in tech excellence, we remain deeply committed to helping our clients achieve long-term growth and competitive advantage through the intelligent use of technology. In this pursuit, trust is our foundation, excellence is our benchmark, and innovation is the path we follow.
+      </motion.p>
+
+      {/* Points */}
+      <motion.ul
+        className="vision-points"
+        initial="hidden"
+        whileInView="visible"
+        variants={{
+          visible: {
+            transition: {
+              staggerChildren: 0.2,
+              delayChildren: 1.0,
+            },
+          },
+        }}
+        viewport={{ once: true }}
+      >
+        {['🌍 Global reach', '🚀 Empowering creators', '💡 Redefining innovation', '🎯 Purpose-driven growth'].map((point, index) => (
+          <motion.li
+            key={index}
+            variants={{
+              hidden: { opacity: 0, x: -30 },
+              visible: { opacity: 1, x: 0 },
+            }}
+            transition={{ duration: 0.5 }}
+          >
+            {point}
+          </motion.li>
+        ))}
+      </motion.ul>
+    </div>
+  </div>
+</section>
+
+<section className="our-values-section">
+  <motion.h2
+    className="values-heading"
+    initial={{ opacity: 0, y: -30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+  >
+    Our Values
+  </motion.h2>
+
+  <div className="zigzag-grid">
+    {[
+      '🌟 Innovation',
+      '🏆 Excellence',
+      '⚡ Agility',
+      '🔍 Transparency',
+      '🌐 Global Thinking',
+      '🤝 Integrity',
+    ].map((value, index) => (
+      <motion.div
+        className="value-card"
+        key={index}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 * index, duration: 0.5 }}
+      >
+        {value}
+      </motion.div>
+    ))}
+  </div>
+</section>
+
+
+      <Footer />
+    </>
   );
 };
 
-export default AboutUs;
+export default About;
