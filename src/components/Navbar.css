@@ -100,6 +100,21 @@ body, html {
 
 
 /* --- Mobile Specific Navbar Styles (Half-Screen Glassmorphic Side Drawer) --- */
+
+@media (max-width: 320px) {
+  .navbar-collapse {
+    width: 85vw !important; /* Slightly narrower for super-small phones */
+  }
+  .signup-btn {
+    font-size: 13px;
+    padding: 0.4rem 0.8rem;
+  }
+  .navbar .nav-link {
+    font-size: 14px;
+  }
+}
+
+
 @media (max-width: 991.98px) {
   .navbar-brand img {
     height: 1.8rem;
@@ -116,11 +131,10 @@ body, html {
     right: 0 !important; /* Position from the right side */
     width: 65vw !important; /* Take up 65% of viewport width */
     max-width: 300px !important; /* Max width for larger phones/small tablets */
-    height: 70vh !important; /* Full viewport height */
     overflow-y: auto !important; /* Allow scrolling if content is long */
     overflow-x: hidden !important; /* Prevent horizontal scroll within the drawer */
     z-index: 100001 !important; /* Ensure it's on top */
-
+    min-height: 100vh !important;
     /* Glassmorphic Background (Updated to Navy Blue/Purple related) */
     background-color: #021024eb !important; /* Darker navy/purple with transparency */
     backdrop-filter: blur(15px) !important; /* Stronger blur for glass effect */
@@ -271,6 +285,31 @@ body, html {
 /* Optional: For very small screens (e.g., width less than 320px), you might make the drawer narrower */
 @media (max-width: 375px) {
   .navbar-collapse {
-    width: 75vw !important; /* Make it slightly wider for tiny screens if 65vw is too small */
+    width: 60vw !important; /* Make it slightly wider for tiny screens if 65vw is too small */
+  }
+}
+
+@media (min-width: 376px) and (max-width: 900px) {
+  .navbar-collapse {
+    width: 70vw !important;  /* Slightly more drawer width for mid-sized phones/tablets */
+    height: 100vh !important;
+  }
+
+  .navbar .nav-link {
+    font-size: 15px;
+    padding: 0.9rem 1rem !important;
+  }
+
+  .signup-btn {
+    font-size: 14px;
+    padding: 0.6rem 1.1rem !important;
+  }
+
+  .navbar-brand .fw-bold {
+    font-size: 1.5rem;
+  }
+
+  .navbar-brand img {
+    height: 2rem;
   }
 }
