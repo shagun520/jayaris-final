@@ -1,7 +1,7 @@
 .about-hero {
   position: relative;
   height: 100vh;
-  background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('./image/aboutbg.jpeg');
+  background-image:  url('./image/aboutbg.jpeg');
   background-size: cover;
   background-position: center;
   color: white;
@@ -48,6 +48,7 @@
 
 
 .our-mission-section {
+  height: 85vh !important;
   padding: 80px 40px;
   background: linear-gradient(to bottom, #000000, #111b64);
   backdrop-filter: blur(16px);
@@ -86,6 +87,9 @@
 }
 
 .mission-paragraph {
+  background: linear-gradient(to right, #b5a5fc, hwb(230 64% 0%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 18px;
   margin-bottom: 30px;
   line-height: 1.6;
@@ -93,16 +97,20 @@
 }
 
 .mission-points {
+  background: linear-gradient(to right, #b5a5fc, hwb(230 64% 0%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   list-style: none;
   padding: 0;
-  display: grid;
-  gap: 12px;
-  font-size: 16px;
+  display: flex;
+  gap: 20px;
+  font-size: 17px;
+  font-style: bold;
 }
 
 
 .our-vision-section {
-  height: 80vh !important;
+  height: 85vh !important;
   padding: 80px 40px;
   background: linear-gradient(to bottom, #111b64, #060638);
   backdrop-filter: blur(16px);
@@ -141,6 +149,9 @@
 }
 
 .vision-paragraph {
+  background: linear-gradient(to right, #b5a5fc, hwb(230 64% 0%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 18px;
   margin-bottom: 30px;
   line-height: 1.6;
@@ -148,11 +159,15 @@
 }
 
 .vision-points {
+  background: linear-gradient(to right, #b5a5fc, hwb(230 64% 0%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   list-style: none;
   padding: 0;
-  display: grid;
+  display: flex;
   gap: 12px;
-  font-size: 16px;
+  font-size: 19px;
+  font-style: bold;
 }
 
 
@@ -181,10 +196,10 @@
 
 .value-card {
   backdrop-filter: blur(16px);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(31, 4, 72, 0.566);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(33, 34, 36, 0.677);
+  box-shadow: 0 2px 13px rgba(120, 183, 255, 0.677);
   padding: 20px 30px;
   color: #fff;
   font-size: 18px;
@@ -192,6 +207,11 @@
   min-width: 180px;
   text-align: center;
   transition: 0.4s ease;
+
+  background: linear-gradient(to right, #b5a5fc, hwb(230 64% 0%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* fallback */
 }
 
 /* Zig-zag card placement */

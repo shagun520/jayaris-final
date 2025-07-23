@@ -53,7 +53,7 @@ const Footer = () => {
   return (
     <footer className="main-footer py-5">
       <Container>
-        <Row>
+        <Row className="footer-content-row justify-content-start">
           {/* About Jayaris Section */}
           <Col md={4} className="mb-4 mb-md-0">
             <h5 className="footer-heading">About Jayaris</h5>

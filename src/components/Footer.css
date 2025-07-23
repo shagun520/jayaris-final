@@ -47,6 +47,7 @@
   color: #606dc5;
 }
 
+
 .footer-divider {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -117,5 +118,30 @@
   /* Ensure some spacing between list items even when they're part of a dropdown */
   .main-footer .footer-links li {
     margin-bottom: 0.8rem;
+  }
+}
+@media (min-width: 1024px) {
+  .footer-content-row {
+    margin-left: 0; /* Reset if Bootstrap adds spacing */
+    justify-content: flex-start !important; /* Align all columns to left */
+    gap: 2rem; /* Optional: space between columns */
+  }
+
+  .main-footer .col-md-2,
+  .main-footer .col-md-3 {
+    max-width: 18%; /* Reduce width so columns are tighter */
+    flex: 0 0 18%;
+    margin-right: -20px;
+  }
+  .col-md-4
+  {
+    margin-right: 135px;
+  }
+  .col-md-2{
+    margin-right: -50px !important;
+  }
+  .main-footer .col-md-4 {
+    max-width: 35%;
+    flex: 0 0 35%;
   }
 }

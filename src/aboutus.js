@@ -116,17 +116,38 @@ const missionPoints = [
       </motion.p>
 
       <motion.ul
-        className="mission-points"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { duration: 1 } },
-        }}
-      >
-        <li>🌐 Bridging global gaps through tech</li>
-        <li>🚀 Delivering future-ready digital solutions</li>
-        <li>🎯 Elevating brands and streamlining operations</li>
-        <li>💡 Leveraging India’s top tech talent</li>
-      </motion.ul>
+  className="mission-points"
+  initial="hidden"
+  whileInView="visible"
+  variants={{
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 1.0,
+      },
+    },
+  }}
+  viewport={{ once: true }}
+>
+  {[
+    'Bridging global gaps through tech',
+    'Delivering future-ready digital solutions',
+    'Elevating brands and streamlining operations',
+    'Leveraging India’s top tech talent',
+  ].map((point, index) => (
+    <motion.li
+      key={index}
+      variants={{
+        hidden: { opacity: 0, x: -30 },
+        visible: { opacity: 1, x: 0 },
+      }}
+      transition={{ duration: 0.3 }}
+    >
+      {point}
+    </motion.li>
+  ))}
+</motion.ul>
+
     </motion.div>
   </motion.div>
 </section>
@@ -186,14 +207,14 @@ const missionPoints = [
         }}
         viewport={{ once: true }}
       >
-        {['🌍 Global reach', '🚀 Empowering creators', '💡 Redefining innovation', '🎯 Purpose-driven growth'].map((point, index) => (
+        {[' Global reach', ' Empowering creators', ' Redefining innovation', ' Purpose-driven growth'].map((point, index) => (
           <motion.li
             key={index}
             variants={{
               hidden: { opacity: 0, x: -30 },
               visible: { opacity: 1, x: 0 },
             }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
           >
             {point}
           </motion.li>
@@ -216,12 +237,12 @@ const missionPoints = [
 
   <div className="zigzag-grid">
     {[
-      '🌟 Innovation',
-      '🏆 Excellence',
-      '⚡ Agility',
-      '🔍 Transparency',
-      '🌐 Global Thinking',
-      '🤝 Integrity',
+      ' Innovation',
+      ' Excellence',
+      ' Agility',
+      ' Transparency',
+      ' Global Thinking',
+      ' Integrity',
     ].map((value, index) => (
       <motion.div
         className="value-card"
