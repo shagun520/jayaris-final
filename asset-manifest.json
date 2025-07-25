@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/jayaris-final/static/css/main.e66bb5e2.css",
-    "main.js": "/jayaris-final/static/js/main.92a3f09f.js",
+    "main.css": "/jayaris-final/static/css/main.7648b553.css",
+    "main.js": "/jayaris-final/static/js/main.1e6856f9.js",
     "static/media/bg2.mp4": "/jayaris-final/static/media/bg2.2b04d36a270a35e4ab1d.mp4",
     "static/media/earthbg.mp4": "/jayaris-final/static/media/earthbg.9cd18799712566afa3be.mp4",
     "static/media/Earthvideo.mp4": "/jayaris-final/static/media/Earthvideo.217bc138c2eb8d98fc50.mp4",
@@ -10,9 +10,11 @@
     "static/media/Team.jpg": "/jayaris-final/static/media/Team.4194021f90d757d6747a.jpg",
     "static/media/graphic.jpg": "/jayaris-final/static/media/graphic.8ea687706ce5eb73347c.jpg",
     "static/media/star.png": "/jayaris-final/static/media/star.94256341233f5272eeb5.png",
+    "static/media/bootstrap-icons.woff?": "/jayaris-final/static/media/bootstrap-icons.1295669cd4e305c97f2c.woff",
     "static/media/client2.jpeg": "/jayaris-final/static/media/client2.22bc2bffac0d9ae07700.jpeg",
     "static/media/img1.jpg": "/jayaris-final/static/media/img1.ea9479bb04f5339f7491.jpg",
     "static/media/logo.png": "/jayaris-final/static/media/logo.b70fd411c808c1328089.png",
+    "static/media/bootstrap-icons.woff2?": "/jayaris-final/static/media/bootstrap-icons.92ea18a81d737146ff04.woff2",
     "static/media/results.png": "/jayaris-final/static/media/results.18e68cee5af4d73b4843.png",
     "static/media/img2.webp": "/jayaris-final/static/media/img2.69562e16c9c4b8844ef7.webp",
     "static/media/client3.jpeg": "/jayaris-final/static/media/client3.e854a9c545bfffb1acf4.jpeg",
@@ -44,11 +46,11 @@
     "static/media/aboutbg5.jpeg": "/jayaris-final/static/media/aboutbg5.f856f0ece1bf69164b80.jpeg",
     "static/media/Testibg.jpeg": "/jayaris-final/static/media/Testibg.f84b6aff7a9ee4e7ab8f.jpeg",
     "index.html": "/jayaris-final/index.html",
-    "main.e66bb5e2.css.map": "/jayaris-final/static/css/main.e66bb5e2.css.map",
-    "main.92a3f09f.js.map": "/jayaris-final/static/js/main.92a3f09f.js.map"
+    "main.7648b553.css.map": "/jayaris-final/static/css/main.7648b553.css.map",
+    "main.1e6856f9.js.map": "/jayaris-final/static/js/main.1e6856f9.js.map"
   },
   "entrypoints": [
-    "static/css/main.e66bb5e2.css",
-    "static/js/main.92a3f09f.js"
+    "static/css/main.7648b553.css",
+    "static/js/main.1e6856f9.js"
   ]
 }
