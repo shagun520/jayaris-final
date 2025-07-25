@@ -96,7 +96,16 @@ body, html {
   transition: all 0.3s ease;
   border-radius: 2px;
 }
-
+.lang-icon {
+  font-size: 1.2rem; 
+  vertical-align: middle;
+  font-size: 1.4rem;
+  margin-right: 0 !important; 
+}
+.language-toggle {
+  gap: 0.0005rem !important;
+  padding: 0.25rem 0.5rem !important; 
+}
 
 
 /* --- Mobile Specific Navbar Styles (Half-Screen Glassmorphic Side Drawer) --- */
